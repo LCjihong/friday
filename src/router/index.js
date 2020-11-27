@@ -8,27 +8,27 @@ export default new Router({
   mode:'history',
   routes: [
     {
-      path: '/',
+      path: '/lr',
       name: 'home',
       component: () =>
       import ('../components/LRhome.vue'),
-      redirect:"/login",
+      redirect:"/lr/login",
       children:[{
-        path:'/login',
+        path:'login',
         component: () =>
         import ('../components/logo/longin.vue')
       },
       {
-        path:'/Register',
+        path:'Register',
         component: () =>
         import ('../components/logo/register.vue')
       },{
-        path:'/Vcaphone',
+        path:'Vcaphone',
         component: () =>
         import ('../components/logo/vcaofmPhone.vue')
       },
       {
-        path:'/ForgetPwd',
+        path:'ForgetPwd',
         component: () =>
         import ('../components/logo/ResetPassword.vue')
       }

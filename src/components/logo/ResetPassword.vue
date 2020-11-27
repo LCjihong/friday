@@ -11,9 +11,11 @@
         </div>
         <div class="code">
             <div class="reset_code">
-                <input type="text" placeholder="验证码" v-model="VerificationCode" @focus="handlefocus" @blur="handleblur">
+                <input type="text" placeholder="验证码" v-model="VerificationCode" @focus="handlefocus" @blur="verification">
             </div>
-            <div class="reset_box2"></div>
+            <div class="reset_box2">
+               <img src="http://127.0.0.1:3000/captchas" alt="" ref = "change">
+            </div>
             <p class="reset_code1" @click="handleCodel">看不清换一张</p>
         </div>
         <div class="reset_input">
@@ -29,8 +31,8 @@
             </div>
             <div class="number_gain" @click="handleNumber">获取验证码</div>
         </div>
-        <div class="reset_button" @click="handlereset">
-            <router-link to="/" class="resettouch">提交</router-link>
+        <div class="reset_button" @click="resetbtn" >
+            <router-link to="" class="resettouch">提交</router-link>
         </div>
       </form>
   </div>
@@ -39,6 +41,9 @@
 <script>
 export default {
   name:'ResetPassword',
+  beforeMount(){
+    this.$emit('tptxe-message','找回密码')
+  },
   data(){
       return {
             CellPhoneNumber:'',             // 手机号
@@ -67,7 +72,7 @@ export default {
           }
       },
       handleCodel(){         // 验证码
-
+       this.$refs.change.src =`http://127.0.0.1:3000/captchas?time=${new Date()}`;
       },
       handleblur(e){        // 表单失去焦点的样式
           e.path[1].style.border="1px solid #eeeeee"
@@ -88,7 +93,6 @@ export default {
         t = setInterval(()=>{
             function add(){
                 if(timer > 0){
-
                     e.target.style.background="#eeeeee";
                     e.target.style.color = "#498e3d";
                     e.target.style.pointerEvents = 'none';
@@ -106,9 +110,39 @@ export default {
             add()
           },1000)
       },
-      handlereset(){        // 发送 ajax 请求
-
-      },
+      //验证码请求
+      verification(e){
+      e.path[1].style.border="1px solid gray";
+      e.path[1].style.boxShadow="0px 0px 0px black";
+    this.$axios.post('http://127.0.0.1:3000/caps',this.$qs.stringify({
+      vfcnum:this.VerificationCode
+    })).then(function(res){
+     console.log(res)
+      if(res.data.returned == '验证成功'){
+         alert('验证成功')
+       }else if(res.data.returned == '验证失败'){
+         alert('验证失败')
+       }
+    })
+   },
+   resetbtn(){
+     this.$axios.post('http://127.0.0.1:3000/resetpwd',this.$qs.stringify({
+       uphone:this.CellPhoneNumber,
+       upwd:this.passworldOne,
+     })).then(function(res){
+       console.log(res)
+       if(res.data.returned == '重置成功'){
+         alert('重置成功')
+         window.location = '/lr/login';
+       }else if(res.data.returned == '重置失败'){
+         alert('重置失败')
+       }else{
+         alert('查询不到本机号')
+       }
+     }).catch(function(err){
+       console.log(err)
+     })
+   },
   }
 }
 
@@ -119,9 +153,15 @@ export default {
 .reset_box2{
     width:100px;
     height:40px;
-    border:1px solid red;
+    /* border:1px solid red; */
     float: left;
     margin-left:6px;
+}
+.reset_box2 img{
+  background-color: gainsboro;
+  width: 100%;
+  height: 40px;
+  float: left;
 }
 
 /* 重置密码大框框的样式 */
