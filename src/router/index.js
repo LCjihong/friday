@@ -4,67 +4,47 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 export default new Router({
-  mode:'history',
-  routes: [
-    {
-<<<<<<< HEAD
+  mode: 'history',
+  routes: [{
       path: '/',
       name: 'welcome',
-      component: () => import ('@/components/Home/Home')
+      component: () => import('@/components/Home/Home'),
+      redirect: '/welcome',
+      children: [{
+          path: 'welcome',
+          component: () => import('@/components/Nav/Welcome')
+        },
+        {
+          path: 'classify',
+          component: () => import('@/components/Nav/Classify'),
+          children: [{
+            path: 'city',
+            component: () => import('@/components/Nav/Classify/City')
+          }]
+        },
+      ]
     },
     {
       path: '/lr',
       name: 'home',
-      component: () =>
-        import('../components/LRhome.vue'),
+      component: () => import('../components/LRhome.vue'),
       redirect: "/lr/login",
       children: [{
           path: 'login',
-          component: () =>
-            import('../components/logo/longin.vue')
+          component: () => import('../components/logo/longin.vue')
         },
         {
           path: 'Register',
-          component: () =>
-            import('../components/logo/register.vue')
+          component: () => import('../components/logo/register.vue')
         }, {
           path: 'Vcaphone',
-          component: () =>
-            import('../components/logo/vcaofmPhone.vue')
+          component: () => import('../components/logo/vcaofmPhone.vue')
         },
         {
           path: 'ForgetPwd',
-          component: () =>
-            import('../components/logo/ResetPassword.vue')
+          component: () => import('../components/logo/ResetPassword.vue')
         }
       ]
-=======
-      path: '/lr',
-      name: 'home',
-      component: () =>
-      import ('../components/LRhome.vue'),
-      redirect:"/lr/login",
-      children:[{
-        path:'login',
-        component: () =>
-        import ('../components/logo/longin.vue')
-      },
-      {
-        path:'Register',
-        component: () =>
-        import ('../components/logo/register.vue')
-      },{
-        path:'Vcaphone',
-        component: () =>
-        import ('../components/logo/vcaofmPhone.vue')
-      },
-      {
-        path:'ForgetPwd',
-        component: () =>
-        import ('../components/logo/ResetPassword.vue')
-      }
-    ]
->>>>>>> b2169a6d7b61cfd0a13c77b0e99c1b98c25e8d46
     },
   ]
 })

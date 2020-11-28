@@ -40,7 +40,7 @@
                     <strong v-for="(value, i) of list" :key="i">
 
                     <i :class="{'iconfont icon-anjianfengexian':i != 0}"></i>
-                    <router-link to="/login" tag="i">{{ value }}</router-link>
+                    <router-link to="" tag="i" style="cursor:pointer">{{ value }}</router-link>
                     </strong>
                   </div>
                 </div>
@@ -48,11 +48,11 @@
             </div>
           </div>
       </div>
-      <li><router-link tag="span" to="">首页</router-link></li>
-      <li><router-link tag="span" to="">同城</router-link></li>
-      <li><router-link tag="span" to="">礼拜五</router-link></li>
-      <li><router-link tag="span" to="">积分商城</router-link></li>
-      <li><router-link tag="span" to="">导航+</router-link></li>
+      <li><router-link tag="span" to="/">首页</router-link></li>
+      <li><router-link tag="span" to="/classify/city">同城</router-link></li>
+      <li><router-link tag="span" to="/classify/friday">礼拜五</router-link></li>
+      <li><router-link tag="span" to="/classify/">积分商城</router-link></li>
+      <li><router-link tag="span" to="/classify/nav">导航+</router-link></li>
     </el-row>
   </el-row>
 </template>
@@ -620,12 +620,12 @@ export default {
 }
 .nav-box{
   color: #333333;
+  user-select: none;
 }
 .nav-box li{
   float: left;
   transition: 0.3s;
   margin-right: 1px;
-  user-select: none;
 }
 .nav-box li:hover{
   background-color: #fb9012;

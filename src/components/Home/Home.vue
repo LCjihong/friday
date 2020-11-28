@@ -1,18 +1,16 @@
 <template>
   <div id="home-box">
     <top-bar></top-bar>
-    <welcome></welcome>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 import TopBar from "@/components/TopBar";
-import Welcome from "@/components/Nav/Welcome";
 export default {
   name: "Home",
   components: {
     TopBar,
-    Welcome
   },
 };
 </script>
