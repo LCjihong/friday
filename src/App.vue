@@ -19,17 +19,7 @@ export default {
 </script>
 
 <style>
-<<<<<<< Updated upstream
-*{
-  margin: 0;
-  padding: 0;
-}
-ul,li{
-  list-style: none;
-}
-=======
-  @import url('assets/css/reset.css');
-  @import url('//at.alicdn.com/t/font_2226682_h0w0o1aasdh.css');
->>>>>>> Stashed changes
+@import url('assets/css/reset.css');
+@import url('//at.alicdn.com/t/font_2226682_3ty5j6w6d8d.css');
 </style>
 

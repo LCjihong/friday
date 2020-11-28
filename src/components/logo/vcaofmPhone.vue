@@ -23,14 +23,14 @@
              <input type="checkbox">
              <span class="texzi">自动登录</span>
              <span class="wjPwd">
-               <router-link to="/ForgetPwd">忘记密码
+               <router-link to="/lr/ForgetPwd">忘记密码
                <span class="iconfont icon-wenhao"></span>
                </router-link>
              </span>
           </div>
           <div class="btnlr">
             <button class="loginBtn">
-               <router-link to="/Register">注  册</router-link>
+               <router-link to="/lr/Register">注  册</router-link>
             </button>
              <button class="regisBtn">
              登  录

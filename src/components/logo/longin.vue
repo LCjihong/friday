@@ -31,7 +31,7 @@
        </div>
        <button class="loginBtn">登录</button>
        <button class="regisBtn">
-          <router-link to="/Register">会员注册</router-link>
+          <router-link to="/lr/Register">会员注册</router-link>
         </button>
        <p class="hint">提示：未注册用户讲直接注册成为礼拜五用户</p>
        <p class="cooperation">------------用合作网站登录------------</p>

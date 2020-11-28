@@ -26,7 +26,7 @@
           </div>
           <button class="loginBtn">注  册</button>
           <button class="regisBtn">
-             <router-link to="/login">登  录</router-link>
+             <router-link to="/lr/login">登  录</router-link>
         </button>
         </div>
      </div>
