@@ -1,10 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-<<<<<<< Updated upstream
-// import Home from "@/components/Home";
-=======
-import Home from "@/components/Home/Home";
->>>>>>> Stashed changes
 
 Vue.use(Router)
 
@@ -20,16 +15,16 @@ export default new Router({
       children:[{
         path:'login',
         component: () =>
-        import ('../components/logo/longin.vue')
+        import ('../components/logo/Longin.vue')
       },
       {
         path:'Register',
         component: () =>
-        import ('../components/logo/register.vue')
+        import ('../components/logo/Register.vue')
       },{
         path:'Vcaphone',
         component: () =>
-        import ('../components/logo/vcaofmPhone.vue')
+        import ('../components/logo/VcaofmPhone.vue')
       },
       {
         path:'ForgetPwd',
@@ -38,5 +33,17 @@ export default new Router({
       }
     ]
     },
+    {
+      path:'/classify',
+      component: () =>
+      import ('../components/Nav/Classify.vue'),
+      redirect:"/classify/city",
+      children:[{
+        path:'city',
+        component: () =>
+        import ('../components/Nav/Classify/City.vue')
+      },
+    ]
+    }
   ]
 })
