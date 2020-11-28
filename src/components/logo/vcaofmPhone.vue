@@ -4,7 +4,7 @@
         <div class="regcen-z">
            <span class="logcen-tex1">登录</span>
            <span class="logcen-tex2">
-          <router-link to="/login">账号密码登录</router-link>
+          <router-link to="/lr/login">账号密码登录</router-link>
          <span class="iconfont icon-xiaoren"></span>
          </span>
           <div class="phone">
@@ -37,7 +37,7 @@
              </button>
          </div>
          <p class="hint">提示：未注册用户讲直接注册成为礼拜五用户</p>
-         <p class="cooperation">------------用合作网站登录------------</p>
+         <p class="cooperation">-----------------用合作网站登录-----------------</p>
          <p class="iconfont icon-weixin weixin"></p>
          <p class="iconfont icon-qq qq"></p>
         </div>
@@ -113,7 +113,10 @@ background-color: #f9f9f9;
   height: 44px;
   margin-top: 30px;
   float: left;
-  border: 1px solid gainsboro;
+  border: 1px solid gray;
+}
+.phoneVc input{
+  width: 62%;
 }
 .acquire{
   float: right;
@@ -184,7 +187,7 @@ background-color: #f9f9f9;
 }
 .hint{
   font-size: 10px;
-  text-indent: 4px;
+  text-indent: 30px;
   color: #b6b6b6;
   float: left;
   line-height: 44px;
@@ -198,7 +201,7 @@ background-color: #f9f9f9;
   float: left;
   font-size: 40px;
   color: #00cd0d;
-  margin-left: 27.13%;
+  margin-left: 33%;
   margin-top: 10px;
 }
 .qq{text-align: center;

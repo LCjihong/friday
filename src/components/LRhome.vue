@@ -56,7 +56,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .box{
   width: 100%;
   height: 630px;
@@ -75,13 +75,13 @@ export default {
   /* background:peachpuff; */
 }
 .typearae{
-  width: 66.66%;
+  width: 1280px;
   height: 100%;
   margin: 0 auto;
 }
 .top-log{
   /* float: left; */
-  width: 66.66%;
+  width: 1280px;
   height: 67px;
   margin: 0 auto;
   margin-top: 25px;
