@@ -19,7 +19,7 @@ export default {
 </script>
 
 <style>
-  @import url('assets/css/reset.css');
-  @import url('//at.alicdn.com/t/font_2226682_h0w0o1aasdh.css');
+@import url('assets/css/reset.css');
+@import url('//at.alicdn.com/t/font_2226682_3ty5j6w6d8d.css');
 </style>
 

@@ -11,7 +11,6 @@ Vue.prototype.$qs = qs;
 
 // Vue.prototype.$router = router;
 
-
 Vue.use(Element, {
   size: 'small',
   zIndex: 3000
@@ -20,6 +19,7 @@ console.log(qs.stringify({name:'renjihong', age:21}));
 
 Vue.config.productionTip = false
 
+axios.defaults.withCredentials = true;
 axios.defaults.baseURL = 'http://renjihong.zone:8080'
 Vue.prototype.$axios = axios
 Vue.prototype.$qs = qs

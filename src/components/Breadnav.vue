@@ -1,25 +1,27 @@
 <template>
-  <div class="classify">
     <div class="topNav">
       <div class="navCan">{{navcan}}</div>
     </div>
-    <div class="navCentent">
-      <router-view></router-view>
-    </div>
-  </div>
 </template>
 
 <script>
 export default {
+ name:'Breadnav',
+ props:['config'],
   data(){
     return {
-       navcan:'111'
+       navcan:'',
+       routers:this.config.routera,
     }
   },
   beforeMount(){
-  switch (window.location.pathname) {
-    case '/classify/city':
+    console.log(this.routers)
+  switch (this.routers) {
+    case '/classify/nav':
        this.navcan = '首页>专题'
+      break;
+     case '/particulars':
+       this.navcan = '您当前的位置：首页>全部商品>苹果>阿克苏'
       break;
 
     default:
@@ -30,13 +32,6 @@ export default {
 </script>
 
 <style scoped>
-.classify{
-  width: 1280px;
-  /* height: 1000px; */
-  /* float: left; */
-  background-color: pink;
-  margin: 0 auto;
-}
 .topNav{
   width: 100%;
   height: 94px;
