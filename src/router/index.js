@@ -5,7 +5,7 @@ Vue.use(Router)
 
 export default new Router({
   mode: 'history',
-  
+
   routes: [{
       path: '/',
       name: 'welcome',
@@ -14,17 +14,6 @@ export default new Router({
       children: [{
           path: 'welcome',
           component: () => import('@/components/Home/Nav/Welcome')
-<<<<<<< HEAD
-        },
-        // {
-        //   path: 'classify',
-        //   component: () => import('@/components/Nav/Classify'),
-        //   children: [{
-        //     path: 'city',
-        //     component: () => import('@/components/Nav/Classify/City')
-        //   }]
-        // },
-=======
         },
         {
           path: 'classify',
@@ -86,7 +75,6 @@ export default new Router({
             }
           ]
         }
->>>>>>> 457ce5466f87c416dd2f74fa1865b2b207c7b514
       ]
     },
     {
@@ -151,7 +139,7 @@ export default new Router({
     {
       path:'/mdata',
       component: () =>
-      import ('../components/Home/Personal/Mdata/MyData.vue')
+      import ('../components/Home/Personal/MyData/MyData.vue')
     },
   ]
 })
