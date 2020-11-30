@@ -14,17 +14,6 @@ export default new Router({
       children: [{
           path: 'welcome',
           component: () => import('@/components/Home/Nav/Welcome')
-<<<<<<< HEAD
-        },
-        // {
-        //   path: 'classify',
-        //   component: () => import('@/components/Nav/Classify'),
-        //   children: [{
-        //     path: 'city',
-        //     component: () => import('@/components/Nav/Classify/City')
-        //   }]
-        // },
-=======
         },
         {
           path: 'classify',
@@ -86,7 +75,6 @@ export default new Router({
             }
           ]
         }
->>>>>>> 457ce5466f87c416dd2f74fa1865b2b207c7b514
       ]
     },
     {
