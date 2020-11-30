@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div class="classify">
     <breadnav :config='routers'></breadnav>
     <div class="navCentent">
@@ -33,3 +34,18 @@ export default {
 }
 
 </style>
+=======
+  <!-- 这里放页面路径组件 -->
+  <router-view></router-view>
+</template>
+
+<script>
+export default {
+  name:'Classify'
+}
+</script>
+
+<style>
+
+</style>
+>>>>>>> 457ce5466f87c416dd2f74fa1865b2b207c7b514

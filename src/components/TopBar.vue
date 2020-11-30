@@ -17,42 +17,42 @@
         </div>
       </div>
       <div class="btn-box">
-        <el-button plain type="info"><i class="iconfont icon-yonghu">个人中心</i></el-button>
-        <el-button plain type="info"><i class="iconfont icon-gouwuche">购物车</i></el-button>
+        <router-link to="/personal" tag="span"><el-button plain type="info"><i class="iconfont icon-yonghu">个人中心</i></el-button></router-link>
+        <router-link to="/cart" tag="span"><el-button plain type="info"><i class="iconfont icon-gouwuche">购物车</i></el-button></router-link>
       </div>
     </el-row>
     <el-row class="nav-box">
       <div id="menu">
         <li><em>全部分类<i class="iconfont icon-arrow-right"></i></em></li>
-          <div class="classify">
-            <p 
-            v-for="(item, index) of menuData" 
-            :key="index" @mouseover="changeDetails(index)" 
-            :style="{
-              backgroundColor:activeMenuOption == index ? '#ebffe7' : '#ffffff',
-              borderRight:activeMenuOption == index ? 'unset' : '1px solid #efeeec',
-            }"><i :class="item.class">{{ item.text }}</i></p>
-            <div class="details">
-              <div class="group" v-for="(item, index) of detailsData" :key="index">
-                <h3>{{ item.title }}</h3>
-                <div class="info">
-                  <div v-for="(list, idx) of item.details" :key="idx">
-                    <strong v-for="(value, i) of list" :key="i">
+        <div class="classify">
+          <p 
+          v-for="(item, index) of menuData" 
+          :key="index" @mouseover="changeDetails(index)" 
+          :style="{
+            backgroundColor:activeMenuOption == index ? '#ebffe7' : '#ffffff',
+            borderRight:activeMenuOption == index ? 'unset' : '1px solid #efeeec',
+          }"><i :class="item.class">{{ item.text }}</i></p>
+          <div class="details">
+            <div class="group" v-for="(item, index) of detailsData" :key="index">
+              <h3>{{ item.title }}</h3>
+              <div class="info">
+                <div v-for="(list, idx) of item.details" :key="idx">
+                  <strong v-for="(value, i) of list" :key="i">
 
-                    <i :class="{'iconfont icon-anjianfengexian':i != 0}"></i>
-                    <router-link to="" tag="i" style="cursor:pointer">{{ value }}</router-link>
-                    </strong>
-                  </div>
+                  <i :class="{'iconfont icon-anjianfengexian':i != 0}"></i>
+                  <router-link to="" tag="i" style="cursor:pointer">{{ value }}</router-link>
+                  </strong>
                 </div>
               </div>
             </div>
           </div>
+        </div>
       </div>
-      <li><router-link tag="span" to="/">首页</router-link></li>
-      <li><router-link tag="span" to="/classify/city">同城</router-link></li>
-      <li><router-link tag="span" to="/classify/friday">礼拜五</router-link></li>
-      <li><router-link tag="span" to="/classify/">积分商城</router-link></li>
-      <li><router-link tag="span" to="/classify/nav">导航+</router-link></li>
+      <router-link tag="li" to="/"><span>首页</span></router-link>
+      <router-link tag="li" to="/classify/city"><span>同城</span></router-link>
+      <router-link tag="li" to="/classify/friday"><span>礼拜五</span></router-link>
+      <router-link tag="li" to="/classify/pointsm"><span>积分商城</span></router-link>
+      <router-link tag="li" to="/classify/nav"><span>导航+</span></router-link>
     </el-row>
   </el-row>
 </template>
@@ -608,6 +608,9 @@ export default {
 .btn-box{
   padding-top: 25px;
   text-align: center;
+}
+.btn-box span:first-child{
+  margin-right: 10px;
 }
 .btn-box button{
   width: 123px;
