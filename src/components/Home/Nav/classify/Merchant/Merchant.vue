@@ -154,6 +154,15 @@ export default {
       ]
     }
   },
+  beforeMount(){
+    console.log(1);
+    this.$axios.get('/merchant?mid=10000')
+    .then(resp => {
+      console.log(resp);
+    }).catch(err => {
+      console.log(err);
+    })
+  },
   components:{
     CityClassify,
     Commodity

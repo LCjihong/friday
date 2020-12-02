@@ -542,13 +542,13 @@ export default {
   font-size: 18px;
   background-color: #eeeeee;
 }
-.recommend .img-box{
+.img-box{
   width: 100%;
   height: 305px;
   text-align: center;
   line-height: 305px;
 }
-.recommend .img-box img{
+.img-box img{
   vertical-align: middle;
 }
 
