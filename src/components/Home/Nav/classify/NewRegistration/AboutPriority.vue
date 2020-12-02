@@ -1,7 +1,7 @@
 <template>
          <!-- 优先保障 -->
-<div class="Friday">
-    <!-- <about-path></about-path> -->
+<div>
+    <about-path></about-path>
     <div class="AboutPrioritybox">
         <div class="AboutPrioritybox1">
             <p>鲜果保障</p>
@@ -30,16 +30,12 @@ export default{
 }
 </script>
 
-<style scoped>
-.Friday{
- width: 1280px;
- margin: 0 auto;
-}
+<style>
 .AboutPrioritybox{
-    width: 1280px;
+    width: 1278px;
     height: 902px;
     border: 1px solid #e9e9e9;
-    /* margin: 0 320px; */
+    margin: 0 320px;
     padding: 29px 40px;
     box-sizing: border-box;
 }
@@ -65,7 +61,7 @@ export default{
 .AboutPrioritybox2>p{
     line-height: 30px;
     font-size:14px;
-    color:#747474;
+    color:#747474; 
     margin-bottom:30px;
     text-align: left;
     text-indent: 2em;

@@ -5,9 +5,11 @@
       <div class="mibox">
         <el-row class="mibox1">
           <span>{{ miboxHeader }}</span>
+          <button class="addBtn" v-show="appear" @click="loca">添加新地址</button>
+          <span v-show="apintegra" class="miboxText" >当前积分：<p class="miboxTex">{{APintegral}}</p></span>
         </el-row>
         <el-row>
-          <router-view></router-view>
+          <router-view @integral = 'APintegral = $event'></router-view>
         </el-row>
       </div>
     </el-row>
@@ -20,11 +22,31 @@ export default {
   name: "Personal",
   data() {
     return {
+      appear:false,
+      apintegra:false,
       miboxHeader: "",
+      APintegral:0,
     };
   },
+  methods:{
+ loca(){
+    this.$router.push('/personal/addmesg');
+  }
+},
   components: {
     Sidebar,
+  },
+  watch:{
+    $route(){
+      if(window.location.pathname == '/personal/maddr'){
+        this.appear = true;
+      }else if(window.location.pathname == '/personal/mybonuspoints' || window.location.pathname == '/personal/integralorder'){
+        this. apintegra = true;
+      }else{
+        this.appear = false;
+        this. apintegra = false;
+      }
+    }
   },
   beforeRouteEnter(to, from, next) {
     let header;
@@ -34,6 +56,12 @@ export default {
         break;
       case "morder":
         header = "我的订单";
+        break;
+      case "mybonuspoints":
+        header = "我的积分";
+        break;
+      case "integralorder":
+        header = "积分订单";
         break;
       case "mwallet":
         header = "我的钱包";
@@ -71,6 +99,12 @@ export default {
         break;
       case "morder":
         this.miboxHeader = "我的订单";
+        break;
+      case "mybonuspoints":
+        this.miboxHeader = "我的积分";
+        break;
+      case "integralorder":
+        this.miboxHeader = "积分订单";
         break;
       case "mwallet":
         this.miboxHeader = "我的钱包";
@@ -112,7 +146,7 @@ export default {
 .mibox {
   float: left;
   width: 1083px;
-  height: 625px;
+  /* height: 625px; */
   border: 1px solid #e7e7e7;
   position: relative;
 }
@@ -131,6 +165,26 @@ export default {
   font-size: 17px;
   margin-right: 40px;
   color: #f08200;
+}
+.addBtn{
+  float: right;
+  width: 90px;
+  height: 30px;
+  background-color: #498e3d;
+  color: white;
+  outline: none;
+  border: 0;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.miboxText{
+  float: right;
+}
+.miboxTex{
+  float: right;
+  color: #f08200;
+  font-size: 20px;
+  line-height: 56px;
 }
 </style>
 

@@ -1,24 +1,20 @@
 <template>
         <!-- 左侧导航  -->
     <div class="aboutfridayleft">
-        <div class="aboutfridayleft-left">礼拜五商城</div>
-        <router-link to="/1" class="aboutfridayleft-box1">关于礼拜五<span>></span></router-link>
-        <router-link to="/2" class="aboutfridayleftclick">新用户注册</router-link>
-        <router-link to="/3">在线下单</router-link>
-        <router-link to="/4">支付方式</router-link>
-        <router-link to="/5" class="aboutfridayleft-box1">配送说明<span>></span></router-link>
-        <router-link to="/6">运费说明</router-link>
-        <router-link to="/7">配送方式</router-link>
-        <router-link to="/8">发票说明</router-link>
-        <router-link to="/9" class="aboutfridayleft-box1">售后服务<span>></span></router-link>
-        <router-link to="/10">退换货原则</router-link>
-        <router-link to="/11">服务保障承诺</router-link>
-        <router-link to="/12">验货和签收</router-link>
-        <router-link to="/13">发票说明</router-link>
-        <router-link to="/14" class="aboutfridayleft-box1">加盟礼拜五<span>></span></router-link>
-        <router-link to="/15">加盟条款</router-link>
-        <router-link to="/16">公司简介</router-link>
-        <router-link to="/17">服务协议</router-link>
+        <div class="aboutfridayleft-left">个人中心</div>
+        <p class="aboutfridayleft-box1">交易管理<span>></span></p>
+        <router-link to="/2">我的账户</router-link>
+        <router-link to="/3">我的订单</router-link>
+        <router-link to="/4">我的钱包</router-link>
+        <p class="aboutfridayleft-box1">会员资料<span>></span></p>
+        <router-link to="/6">个人资料</router-link>
+        <router-link to="/7">地址管理</router-link>
+        <router-link to="/8">我的收藏</router-link>
+        <router-link to="/9">最近浏览</router-link>
+        <router-link to="/10">修改密码</router-link>
+        <p class="aboutfridayleft-box1">站内信<span>></span></p>
+        <router-link to="/12">我的消息</router-link>
+        <router-link to="/13">意见反馈</router-link>  
     </div>
 </template>
 
@@ -30,24 +26,24 @@ export default {
 
 <style>
 
-/* *{
+*{
     margin:0;
     padding:0;
-} */
+}
 
 .aboutfridayleft a.router-link-active{
-    color:green;
+    color:#f08200;
     text-decoration: underline;
 }
 
 .aboutfridayleft{
     float: left;
     width:168px;
-    height:708px;
+    height:625px;
     border:1px solid #e7e7e7;
     color:#666666;
     margin-right:25px;
-    margin-left:220px;
+    margin-left:320px;
 }
 .aboutfridayleft-left{
     width:168px;
@@ -69,6 +65,8 @@ export default {
     line-height: 14px;
 }
 .aboutfridayleft>.aboutfridayleft-box1{
+    margin-left:20px;
+    margin-top:21px;
     color:#666666;
     font-size:16px;
     line-height: 16px;
@@ -133,4 +131,5 @@ export default {
     margin:22px 0px;
 }
 </style>
+
 

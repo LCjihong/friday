@@ -18,15 +18,30 @@ export default new Router({
         {
           path: 'classify',
           component: () => import('@/components/Home/Nav/Classify'),
-          children: [{
-            path: 'city',
-            component: () => import('@/components/Home/Nav/Classify/City/City')
-          },
+          children: [
           {
             path: 'friday',
             component: () => import('@/components/Home/Nav/Classify/Friday/Friday.vue')
           },
+          {
+            path:'nav',
+            component: () =>
+            import ('../components/Home/Nav/Classify/Nav.vue')
+          },
+          {
+            path:'newreigistrat',
+            component: () =>
+            import ('../components/Home/Nav/Classify/NewRegistration/NewRegistration.vue')
+          },
           ]
+        },
+        {
+          path: 'pointsm',
+          component: () => import('@/components/Home/Nav/Classify/Pointsm.vue')
+        },
+        {
+          path: 'city',
+          component: () => import('@/components/Home/Nav/Classify/City/City')
         },
         {
           path: 'personal',
@@ -38,8 +53,33 @@ export default new Router({
               component: () => import('@/components/Home/Personal/MyAccount/MyAccount')
             },
             {
+              path: 'personaldata',
+              component: () => import('@/components/Home/Personal/MyAccount/PersonalData')
+            },
+            {
+              path: 'mybill',
+              component: () => import('@/components/Home/Personal/MyAccount/MyBill')
+            },
+            {
+              path: 'rechargecard',
+              component: () => import('@/components/Home/Personal/MyAccount/RechargeCard')
+            },
+            {
               path: 'morder',
               component: () => import('@/components/Home/Personal/MyOrder/MyOrder')
+            },
+            {
+              path: 'orderaeta',
+              component: () => import('@/components/Home/Personal/MyOrder/OrderDetails')
+            },
+            {
+              path: 'mybonuspoints',
+              component: () => import('@/components/Home/Personal/MyBonuspoints/MyIntegral')
+            },
+            {
+              // src\components\Home\Personal\IntegraIorder\IntegralOrder.vue
+              path: 'integralorder',
+              component: () => import('@/components/Home/Personal/IntegraIorder/IntegralOrder')
             },
             {
               path: 'mwallet',
@@ -50,8 +90,28 @@ export default new Router({
               component: () => import('@/components/Home/Personal/MyData/MyData')
             },
             {
+              path: 'original',
+              component: () => import('@/components/Home/Personal/MyData/Original')
+            },
+            {
+              path: 'newphone',
+              component: () => import('@/components/Home/Personal/MyData/Newphone')
+            },
+            {
+              path: 'bindingsuc',
+              component: () => import('@/components/Home/Personal/MyData/BindingSuc')
+            },
+            {
+              path: 'bindingphone',
+              component: () => import('@/components/Home/Personal/MyData/BindingPhone')
+            },
+            {
               path: 'maddr',
-              component: () => import('@/components/Home/Personal/MyAddr/MyAddr')
+              component: () => import('@/components/Home/Personal/MyAddr/MyAddr'),
+            },
+            {
+              path: 'addmesg',
+              component: () => import('@/components/Home/Personal/MyAddr/AddMesg')
             },
             {
               path: 'mfavorite',
@@ -78,8 +138,35 @@ export default new Router({
       ]
     },
     {
+      path: '/cart',
+      component: () => import('@/components/Home/Shopptro/Shopptro')
+    },
+    {
+      path: '/confirmaor',
+      component: () => import('@/components/Home/Shopptro/confirmaor'),
+      redirect:'/confirmaor/addsite',
+      children:[
+        {
+          path: 'addsite',
+          component: () => import('@/components/Home/Shopptro/AddSite')
+        },
+        {
+          path: 'newaddress',
+          component: () => import('@/components/Home/Shopptro/NewAddress')
+        }
+      ]
+    },
+    {
+      path: '/shoppnull',
+      component: () => import('@/components/Home/Shopptro/ShoppNull')
+    },
+    {
+      path: '/paymentsucce',
+      component: () => import('@/components/Home/Shopptro/PaymentSucce')
+    },
+    {
       path: '/lr',
-      name: 'home',
+      name: 'LRhome',
       component: () =>
       import ('../components/LRhome.vue'),
       redirect:"/lr/login",
@@ -104,38 +191,21 @@ export default new Router({
       }
     ]
     },
-    {
-      path:'/classify',
-      component: () =>
-      import ('../components/Home/Nav/Classify.vue'),
-      redirect:"/classify/nav",
-      children:[{
-        path:'nav',
-        component: () =>
-        import ('../components/Home/Nav/Classify/Nav.vue')
-      },
-    ]
-    },
-    {
-      path:'/pointsm',
-      component: () =>
-      import ('../components/Home/Nav/Pointsm.vue'),
-    },
-    {
-      path:'/particulars',
-      component: () =>
-      import ('../components/Home/Nav/Pointsm/Particulars.vue')
-    },
-    {
-      path:'/lineitem',
-      component: () =>
-      import ('../components/Home/Nav/Pointsm/Lineitem.vue')
-    },
-    {
-      path:'/succeed',
-      component: () =>
-      import ('../components/Home/Nav/Pointsm/Succeed.vue')
-    },
+    // {
+    //   path:'/particulars',
+    //   component: () =>
+    //   import ('../components/Home/Nav/Pointsm/Particulars.vue')
+    // },
+    // {
+    //   path:'/lineitem',
+    //   component: () =>
+    //   import ('../components/Home/Nav/Pointsm/Lineitem.vue')
+    // },
+    // {
+    //   path:'/succeed',
+    //   component: () =>
+    //   import ('../components/Home/Nav/Pointsm/Succeed.vue')
+    // },
     {
       path:'/mdata',
       component: () =>

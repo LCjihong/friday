@@ -33,7 +33,7 @@
             <div class="number_gain" @click="handleNumber">获取验证码</div>
         </div>
         <div class="reset_button" @click="resetbtn" >
-            <router-link to="" class="resettouch">提交</router-link>
+            <router-link to="" class="resettouch">点击绑定</router-link>
         </div>
       </form>
      </div>
@@ -41,7 +41,7 @@
     <div class="AlertRight">
       <div class="succes">
        <span class="iconfont icon-zhifuchenggong tex1"></span>
-       <span class="tex2">恭喜您修改成功</span>
+       <span class="tex2">恭喜您绑定成功</span>
       </div>
     </div>
   </div>
@@ -312,7 +312,7 @@ p{
 }
 /* 提交按钮样式 */
 .reset_button{
-    width:306px;
+    width:150px;
     height:45px;
     line-height: 45px;
     text-align: center;

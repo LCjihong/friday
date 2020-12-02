@@ -5,10 +5,10 @@
       <recommend :data="recommendData"></recommend>
       <el-row class="classify">
         <i>分类:</i>
-        <span 
-        v-for="(value, index) of classifyData" 
+        <span
+        v-for="(value, index) of classifyData"
         :class="{'classifyAct':classifyAct == index}"
-        :key="index" 
+        :key="index"
         @click="changeActive(index)">{{ value }}</span>
       </el-row>
       <el-header height="66px" class="info-header">

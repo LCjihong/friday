@@ -27,7 +27,7 @@ export default {
         height: "500px",
         data: [
           "http://renjihong.zone:2000/home/swiper1.png",
-          "http://renjihong.zone:2000/home/swiper1.png",
+          "http://renjihong.zone:2000/login/积分商城1.jpg",
           "http://renjihong.zone:2000/home/swiper1.png",
           "http://renjihong.zone:2000/login/积分商城1.jpg",
         ],
@@ -137,6 +137,9 @@ export default {
 </script>
 
 <style scoped>
+/* .pointsmStore{
+  width: 1920px;
+} */
 .storeType{
   width: 1280px;
   margin: 0 auto;

@@ -1,7 +1,7 @@
 <template>
   <div class="succeedNox">
     <div class="topTu">
-       <img src="http://renjihong.zone:2000/login/logo.jpg" alt="">
+       <toutop></toutop>
     </div>
       <p class="iconfont icon-zhifuchenggong zFsucc"></p>
       <p  class="succTex">支付成功</p>
@@ -13,13 +13,16 @@
   </div>
 </template>
 
-<script scoped>
+<script >
+import toutop from '@/components/Home/Shopptro/ShoppTop'
 export default {
-
+ components:{
+    toutop,
+  },
 }
 </script>
 
-<style>
+<style scoped>
 .succeedNox{
   /* text-align: center; */
   width: 1280px;

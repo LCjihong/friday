@@ -1,13 +1,13 @@
 <template>
 <div>
-    <!-- <sidebar></sidebar> -->
+    <sidebar></sidebar>
     <div class="mibox">
-        <!-- <div class="mibox1">
+        <div class="mibox1">
             <span>账户余额 : </span>
             <div class="mibox2">
                 <span>{{iomessage1}}</span>
             </div>
-        </div> -->
+        </div>
         <div class="mibox3">
             <p>请选择充值的金额 : </p>
             <div class="mibox4">

@@ -23,7 +23,7 @@ export default {
 
 <style scoped>
 .classify{
-  width: 1280px;
+  /* width: 1280px; */
   /* height: 1000px; */
   /* float: left; */
   /* background-color: pink; */

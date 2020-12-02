@@ -33,8 +33,9 @@ export default {
 
 <style scoped>
 .topNav{
-  width: 100%;
+  width: 1280px;
   height: 94px;
+  margin: 0 auto;
   background-color: white;
 }
 .navCan{

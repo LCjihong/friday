@@ -25,9 +25,9 @@
       <div id="menu">
         <li><em>全部分类<i class="iconfont icon-arrow-right"></i></em></li>
         <div class="classify">
-          <p 
-          v-for="(item, index) of menuData" 
-          :key="index" @mouseover="changeDetails(index)" 
+          <p
+          v-for="(item, index) of menuData"
+          :key="index" @mouseover="changeDetails(index)"
           :style="{
             backgroundColor:activeMenuOption == index ? '#ebffe7' : '#ffffff',
             borderRight:activeMenuOption == index ? 'unset' : '1px solid #efeeec',
@@ -49,9 +49,9 @@
         </div>
       </div>
       <router-link tag="li" to="/"><span>首页</span></router-link>
-      <router-link tag="li" to="/classify/city"><span>同城</span></router-link>
+      <router-link tag="li" to="/city"><span>同城</span></router-link>
       <router-link tag="li" to="/classify/friday"><span>礼拜五</span></router-link>
-      <router-link tag="li" to="/classify/pointsm"><span>积分商城</span></router-link>
+      <router-link tag="li" to="/pointsm"><span>积分商城</span></router-link>
       <router-link tag="li" to="/classify/nav"><span>导航+</span></router-link>
     </el-row>
   </el-row>

@@ -17,7 +17,8 @@ export default {
 
 <style  scoped>
 .navigat{
- width: 100%;
+ width: 1280px;
+ margin: 0 auto;
 }
 .navig1{
  width: 100%;

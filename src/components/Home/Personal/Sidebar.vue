@@ -6,6 +6,8 @@
     <p class="aboutfridayleft-box1">交易管理<span>></span></p>
     <router-link to="/personal/maccount">我的账户</router-link>
     <router-link to="/personal/morder">我的订单</router-link>
+    <router-link to="/personal/mybonuspoints">我的积分</router-link>
+    <router-link to="/personal/integralorder">积分订单</router-link>
     <router-link to="/personal/mwallet">我的钱包</router-link>
 
     <p class="aboutfridayleft-box1">会员资料<span>></span></p>
@@ -14,7 +16,7 @@
     <router-link to="/personal/mfavorite">我的收藏</router-link>
     <router-link to="/personal/mbrowse">最近浏览</router-link>
     <router-link to="/personal/alertpwd">修改密码</router-link>
-    
+
     <p class="aboutfridayleft-box1">站内信<span>></span></p>
     <router-link to="/personal/mmessage">我的消息</router-link>
     <router-link to="/personal/mopinion">意见反馈</router-link>

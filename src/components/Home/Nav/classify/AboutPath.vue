@@ -1,12 +1,12 @@
 <template>
             <!-- 上面路径 -->
     <div class="aboutfridaytop">
-        <p>你的当前位置 : </p>
+        <!-- <p>你的当前位置 : </p>
         <router-link to="/">首页</router-link>
         <p> > </p>
         <router-link to="/">礼拜五商城</router-link>
         <p> > </p>
-        <router-link to="/">新用户注册</router-link>
+        <router-link to="/">新用户注册</router-link> -->
     </div>
 </template>
 
@@ -17,12 +17,12 @@ export default {
     // components:{
     //     AboutPriority
     // }
-    
+
 }
 </script>
 
 <style>
-*{
+/* *{
     margin:0;
     padding:0;
 }
@@ -46,5 +46,5 @@ export default {
 }
 .aboutfridaytop a:hover{
     color:green;
-}
+} */
 </style>

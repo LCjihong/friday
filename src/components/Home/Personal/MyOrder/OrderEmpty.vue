@@ -2,9 +2,9 @@
 <div>
     <!-- <sidebar></sidebar> -->
     <div class="mobox">
-        <!-- <div class="mobox1">
-            <p>我的订单</p>
-        </div> -->
+        <div class="mobox1">
+            <!-- <p>我的订单</p> -->
+        </div>
         <div class="mobox2">
             <div class="mobox3">
                 <router-link to="/2/1">全部</router-link>
@@ -21,15 +21,6 @@
                 <span>|</span>
                 <router-link to="/2/7">已完成/关闭</router-link>
                 <router-link to="/211">订单回收站</router-link>
-            </div>
-            <div class="mobox4">
-                <div class="mobox5">
-                    <img src="http://renjihong.zone:2000/PersonalCenter/null.png" alt="">
-                </div>
-                <div class="mobox6">
-                    <p>你还没有订单哦 ! </p>
-                    <div>去首页看看</div>
-                </div>
             </div>
         </div>
     </div>
@@ -97,37 +88,5 @@ a.router-link-active{
     background:#f08200;
     color:white;
     border-radius:3px;
-}
-.mobox4{
-    margin-top:170px;
-    margin-left:380px;
-}
-.mobox5{
-    width:76px;
-    height:100px;
-    float:left;
-}
-.mobox5>img{
-    width:100%;
-    height:100%;
-}
-.mobox6{
-    float: left;
-    padding-top:10px;
-    padding-left:40px;
-    box-sizing: border-box;
-    font-size: 20px;
-    color:#666666;
-}
-.mobox6>div{
-    width:170px;
-    height:45px;
-    line-height: 45px;
-    text-align: center;
-    background:#f08200;
-    border-radius: 6px;
-    font-size:18px;
-    color:white;
-    margin-top:20px;
 }
 </style>
