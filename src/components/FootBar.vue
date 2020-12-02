@@ -104,30 +104,30 @@ export default {
           title: "关于礼拜五",
           link1: {
             name: "新用户注册",
-            url: "http://renjihong.zone",
+            url: "http://127.0.0.1:8080/classify/newreigistrat",
           },
           link2: {
             name: "新用户注册",
-            url: "http://renjihong.zone",
+            url: "http://127.0.0.1:8080/classify/newreigistrat",
           },
           link3: {
             name: "新用户注册",
-            url: "http://renjihong.zone",
+            url: "http://127.0.0.1:8080/classify/newreigistrat",
           },
         },
         {
           title: "关于礼拜五",
           link1: {
             name: "新用户注册",
-            url: "http://renjihong.zone",
+            url: "http://127.0.0.1:8080/classify/newreigistrat",
           },
           link2: {
             name: "新用户注册",
-            url: "http://renjihong.zone",
+            url: "http://127.0.0.1:8080/classify/newreigistrat",
           },
           link3: {
             name: "新用户注册",
-            url: "http://renjihong.zone",
+            url: "http://127.0.0.1:8080/classify/newreigistrat",
           },
         },
         {

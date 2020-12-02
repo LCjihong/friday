@@ -62,8 +62,9 @@
               <div class="phoneNum">
                      <input type="text">
               </div>
+              <span class="phoneTe" @click="tBtn">更换手机</span>
           </div>
-          <button class="TBtn">提交确认</button>
+          <button class="TBtn" >提交确认</button>
        </div>
    </div>
 </template>
@@ -95,6 +96,9 @@ data() {
           this.$message.error('上传头像图片大小不能超过 2MB!');
         }
         return isJPG && isLt2M;
+      },
+      tBtn(){
+         this.$router.push('/personal/original');
       }
     }
 }
@@ -254,5 +258,12 @@ margin-top: 10px;
   margin-top: 30px;
   margin-left: 200px;
   background-color: #f08200;
+}
+.phoneTe{
+  float: left;
+  margin-left: 10px;
+  margin-top: 10px;
+  color:green ;
+  cursor: pointer;
 }
 </style>

@@ -42,7 +42,7 @@ export default {
   },
   data(){
     return {
-      
+
       swiperConfig:{
         height:'500px',
         data:[
