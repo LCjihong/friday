@@ -49,7 +49,7 @@
         </div>
       </div>
       <router-link tag="li" to="/"><span>首页</span></router-link>
-      <router-link tag="li" to="/classify/city"><span>同城</span></router-link>
+      <router-link tag="li" to="/city"><span>同城</span></router-link>
       <router-link tag="li" to="/classify/friday"><span>礼拜五</span></router-link>
       <router-link tag="li" to="/classify/pointsm"><span>积分商城</span></router-link>
       <router-link tag="li" to="/classify/nav"><span>导航+</span></router-link>

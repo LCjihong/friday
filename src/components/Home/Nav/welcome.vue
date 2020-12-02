@@ -99,20 +99,7 @@
           </div>
         </el-header>
         <el-main class="main">
-          <ul>
-            <li v-for="(item, index) of item.data" :key="index">
-              <div class="img-box">
-                <img :src="item.img" />
-              </div>
-              <p class="title">{{ item.title }}</p>
-              <p class="desc">{{ item.desc }}</p>
-              <p class="price">
-                <em class="iconfont icon-fl-renminbi">{{ item.price }}</em>
-                <i class="iconfont icon-fl-renminbi">{{ item.oPrice }}</i>
-              </p>
-              <router-link to="" class="iconfont icon-gouwuche cart"></router-link>
-            </li>
-          </ul>
+          <commodity :data="item.data"></commodity>
         </el-main>
       </el-row>
     </div>
@@ -121,6 +108,7 @@
 
 <script>
 import Swiper from '@/components/Swiper'
+import Commodity from '../../Commodity';
 export default {
   data() {
     return {
@@ -409,9 +397,10 @@ export default {
     };
   },
   components:{
-    Swiper
+    Swiper,
+    Commodity
   },
-  methods: {
+  methods:{
     changeIdx(index) {
       this.Idx = index;
     },
@@ -419,11 +408,11 @@ export default {
       this.$refs.carousel.setActiveItem(index);
       this.Idx = index;
     },
-  },
+  }
 }
 </script>
 
-<style >
+<style>
 #main {
   width: 1280px;
   margin: 0 auto;
@@ -553,14 +542,23 @@ export default {
   font-size: 18px;
   background-color: #eeeeee;
 }
-.img-box{
+.recommend .img-box{
   width: 100%;
   height: 305px;
   text-align: center;
   line-height: 305px;
 }
-.img-box img{
+.recommend .img-box img{
   vertical-align: middle;
+}
+
+.price em{
+  font-size: 24px;
+  font-weight: 900;
+  color: #ff5757;
+}
+.price em::before{
+  padding-right: 5px;
 }
 .activity .friday p{
   text-align: center;
@@ -571,14 +569,6 @@ export default {
 }
 .activity .friday .price span{
   color: #f08200;
-  padding-right: 5px;
-}
-.price em{
-  font-size: 24px;
-  font-weight: 900;
-  color: #ff5757;
-}
-.price em::before{
   padding-right: 5px;
 }
 .changeIdx{
@@ -601,44 +591,5 @@ export default {
 .commodGroup .main{
   height: 473px;
 }
-.commodGroup .main ul{
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-.commodGroup .main li{
-  width: 305px;
-  height: 100%;
-  box-sizing: border-box;
-  border: 1px solid #dddddd;
-  position: relative;
-}
-.commodGroup .main p{
-  padding-left: 20px;
-}
 
-.commodGroup .main .title {
-  font-size: 18px;
-  line-height: 37px;
-}
-.commodGroup .main .desc{
-  font-size: 14px;
-  line-height: 26px;
-}
-.commodGroup .main .price{
-  line-height: 50px;
-}
-.commodGroup .main .price i{
-  font-size: 18px;
-  text-decoration: line-through;
-  padding-left: 10px;
-  vertical-align: top;
-}
-.commodGroup .main .cart{
-  position: absolute;
-  right: 19px;
-  bottom: 24px;
-  font-size: 30px;
-  color: #f08200;
-}
 </style>

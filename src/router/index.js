@@ -5,7 +5,7 @@ Vue.use(Router)
 
 export default new Router({
   mode: 'history',
-
+  
   routes: [{
       path: '/',
       name: 'welcome',
@@ -16,16 +16,21 @@ export default new Router({
           component: () => import('@/components/Home/Nav/Welcome')
         },
         {
+          path: 'city',
+          component: () => import('@/components/Home/Nav/Classify/City/City')
+        },
+        {
           path: 'classify',
           component: () => import('@/components/Home/Nav/Classify'),
-          children: [{
-            path: 'city',
-            component: () => import('@/components/Home/Nav/Classify/City/City')
-          },
-          {
-            path: 'friday',
-            component: () => import('@/components/Home/Nav/Classify/Friday/Friday.vue')
-          },
+          children: [
+            {
+              path: 'friday',
+              component: () => import('@/components/Home/Nav/Classify/Friday/Friday')
+            },
+            {
+              path: 'merchant',
+              component: () => import('@/components/Home/Nav/Classify/Merchant/Merchant')
+            }
           ]
         },
         {
@@ -84,62 +89,25 @@ export default new Router({
       import ('../components/LRhome.vue'),
       redirect:"/lr/login",
       children:[{
-        path:'login',
-        component: () =>
-        import ('../components/logo/Longin.vue')
-      },
-      {
-        path:'Register',
-        component: () =>
-        import ('../components/logo/Register.vue')
-      },{
-        path:'Vcaphone',
-        component: () =>
-        import ('../components/logo/VcaofmPhone.vue')
-      },
-      {
-        path:'ForgetPwd',
-        component: () =>
-        import ('../components/logo/ResetPassword.vue')
-      }
-    ]
-    },
-    {
-      path:'/classify',
-      component: () =>
-      import ('../components/Home/Nav/Classify.vue'),
-      redirect:"/classify/nav",
-      children:[{
-        path:'nav',
-        component: () =>
-        import ('../components/Home/Nav/Classify/Nav.vue')
-      },
-    ]
-    },
-    {
-      path:'/pointsm',
-      component: () =>
-      import ('../components/Home/Nav/Pointsm.vue'),
-    },
-    {
-      path:'/particulars',
-      component: () =>
-      import ('../components/Home/Nav/Pointsm/Particulars.vue')
-    },
-    {
-      path:'/lineitem',
-      component: () =>
-      import ('../components/Home/Nav/Pointsm/Lineitem.vue')
-    },
-    {
-      path:'/succeed',
-      component: () =>
-      import ('../components/Home/Nav/Pointsm/Succeed.vue')
-    },
-    {
-      path:'/mdata',
-      component: () =>
-      import ('../components/Home/Personal/MyData/MyData.vue')
+          path:'login',
+          component: () =>
+          import ('../components/logo/Longin.vue')
+        },
+        {
+          path:'Register',
+          component: () =>
+          import ('../components/logo/Register.vue')
+        },{
+          path:'Vcaphone',
+          component: () =>
+          import ('../components/logo/VcaofmPhone.vue')
+        },
+        {
+          path:'ForgetPwd',
+          component: () =>
+          import ('../components/logo/ResetPassword.vue')
+        }
+      ]
     },
   ]
 })

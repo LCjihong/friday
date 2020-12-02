@@ -15,7 +15,6 @@ Vue.use(Element, {
   size: 'small',
   zIndex: 3000
 })
-console.log(qs.stringify({name:'renjihong', age:21}));
 
 Vue.config.productionTip = false
 

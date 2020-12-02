@@ -3,14 +3,7 @@
     <swiper :config="swiperConfig"></swiper>
     <el-row id="box">
       <recommend :data="recommendData"></recommend>
-      <el-row class="classify">
-        <i>分类:</i>
-        <span 
-        v-for="(value, index) of classifyData" 
-        :class="{'classifyAct':classifyAct == index}"
-        :key="index" 
-        @click="changeActive(index)">{{ value }}</span>
-      </el-row>
+      <city-classify></city-classify>
       <el-header height="66px" class="info-header">
         <div class="operat">
           <span class="sales">销量</span>
@@ -38,16 +31,18 @@
 import Swiper from "@/components/Swiper";
 import Recommend from '@/components/Recommend';
 import CityInfo from "@/components/Home/Nav/Classify/City/CityInfo";
+import CityClassify from '@/components/Home/Nav/Classify/City/CityClassify'
 export default {
   name:'city',
   components:{
     Swiper,
     Recommend,
-    CityInfo
+    CityInfo,
+    CityClassify
   },
   data(){
     return {
-      classifyAct:0,
+      
       swiperConfig:{
         height:'500px',
         data:[
@@ -82,7 +77,6 @@ export default {
           img: "http://renjihong.zone:2000/home/recommend4.png",
         },
       ],
-      classifyData:['全部','餐饮','酒店','休闲','电影','汽车装饰','家政服务'],
       infoData:[
         {
           title:'阳澄湖大闸蟹',
@@ -171,11 +165,6 @@ export default {
       ]
     };
   },
-  methods:{
-    changeActive(index){
-      this.classifyAct = index;
-    }
-  }
 }
 </script>
 
@@ -183,25 +172,6 @@ export default {
   #box{
     width: 1280px;
     margin: 0 auto;
-  }
-  .classify{
-    height: 56px;
-    font-size: 18px;
-    line-height: 56px;
-    border-bottom: 1px solid #e7e7e7;
-  }
-  .classify span{
-    margin-left: 14px;
-    user-select: none;
-    cursor: pointer;
-    padding: 4px 10px;
-  }
-  .classify span:hover{
-    color: #498e3d;
-  }
-  .classifyAct{
-    background-color: #498e3d !important;
-    color: #ffffff !important;
   }
   .info-header{
     display: flex;

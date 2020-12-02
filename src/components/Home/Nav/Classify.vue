@@ -22,12 +22,5 @@ export default {
 </script>
 
 <style scoped>
-.classify{
-  width: 1280px;
-  /* height: 1000px; */
-  /* float: left; */
-  /* background-color: pink; */
-  margin: 0 auto;
-}
 
 </style>
