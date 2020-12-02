@@ -47,7 +47,6 @@ export default {
     border:1px solid #e7e7e7;
     color:#666666;
     margin-right:25px;
-    margin-left:220px;
 }
 .aboutfridayleft-left{
     width:168px;
