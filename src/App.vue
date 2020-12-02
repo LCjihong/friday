@@ -20,6 +20,6 @@ export default {
 
 <style>
 @import url('assets/css/reset.css');
-@import url('//at.alicdn.com/t/font_2226682_3ty5j6w6d8d.css');
+@import url('//at.alicdn.com/t/font_2226682_wt88c61advn.css');
 </style>
 

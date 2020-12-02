@@ -15,7 +15,6 @@ export default {
     }
   },
   beforeMount(){
-    console.log(this.routers)
   switch (this.routers) {
     case '/classify/nav':
        this.navcan = '首页>专题'

@@ -16,6 +16,10 @@ export default new Router({
           component: () => import('@/components/Home/Nav/Welcome')
         },
         {
+          path: 'city',
+          component: () => import('@/components/Home/Nav/Classify/City/City')
+        },
+        {
           path: 'classify',
           component: () => import('@/components/Home/Nav/Classify'),
           children: [
@@ -33,6 +37,10 @@ export default new Router({
             component: () =>
             import ('../components/Home/Nav/Classify/NewRegistration/NewRegistration.vue')
           },
+            {
+              path: 'merchant',
+              component: () => import('@/components/Home/Nav/Classify/Merchant/Merchant')
+            }
           ]
         },
         {
