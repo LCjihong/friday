@@ -71,7 +71,6 @@ export default {
     float:left;
     width:1083px;
     /* height:625px; */
-    border:1px solid #e7e7e7;
     padding-bottom:40px;
     box-sizing: border-box;
     /* position: absolute; */

@@ -28,7 +28,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 /* *{
     margin:0;
@@ -46,8 +46,8 @@ export default {
     height:708px;
     border:1px solid #e7e7e7;
     color:#666666;
-    margin-right:25px;
-    margin-left:220px;
+    /* margin-right:25px;
+    margin-left:310px; */
 }
 .aboutfridayleft-left{
     width:168px;

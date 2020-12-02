@@ -40,10 +40,11 @@ export default {
 </script>
 
 <style scoped>
-/* .NewBox{
+.NewBox{
   width: 1280px;
   margin: 0 auto;
-} */
+  /* margin-bottom: 20px; */
+}
 .aboutfridayright1{
     float: left;
     width:1083px;

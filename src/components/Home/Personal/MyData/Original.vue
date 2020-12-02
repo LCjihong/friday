@@ -8,26 +8,26 @@
       <div class="reset" id="reset">
       <form>
         <div class="reset_input Resetfirst">
-            <input type="text" placeholder="请输入手机号" v-model="CellPhoneNumber" @change="handleChange" @focus="handlefocus" @blur="handleblur">
+            <input type="text" placeholder="请输入手机号" >
             <div class="resetbox">
                 <span></span>
-                <p>{{message}}</p>
+                <!-- <p>{{message}}</p> -->
             </div>
         </div>
         <div class="code">
             <div class="reset_code">
-                <input type="text" placeholder="验证码" v-model="VerificationCode" @focus="handlefocus" @blur="verification">
+                <input type="text" placeholder="验证码"  >
             </div>
             <div class="reset_box2">
                <img src="http://127.0.0.1:3000/captchas" alt="" ref = "change">
             </div>
-            <p class="reset_code1" @click="handleCodel">看不清换一张</p>
+            <p class="reset_code1" >看不清换一张</p>
         </div>
         <div class="reset_input">
-            <input type="text" placeholder="请输入密码验证身份" v-model="passworldOne" @focus="handlefocus" @blur="handleblur">
+            <input type="text" placeholder="请输入密码验证身份" >
         </div>
-        <div class="reset_button" @click="resetbtn" >
-            <router-link to="" class="resettouch">验证提交</router-link>
+        <div class="reset_button">
+            <router-link to="/personal/newphone" class="resettouch">验证提交</router-link>
         </div>
       </form>
      </div>
@@ -50,7 +50,6 @@ export default {
 .originalPhone{
 width: 1085px;
 height: 568px;
-border: 1px solid gainsboro;
 }
 .nav1{
   width: 236px;
@@ -92,7 +91,6 @@ text-align: center;
 .Alert{
   width: 1085px;
   height: 568px;
-  border: 1px solid gainsboro;
 }
 .AlertLeft{
   float: left;

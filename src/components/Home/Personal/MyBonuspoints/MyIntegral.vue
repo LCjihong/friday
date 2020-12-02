@@ -14,7 +14,7 @@
                     <th style="width:40%">变动</th>
                     <th style="width:30%">来源</th>
                 </tr>
-                <tr v-for="(x,index) in tableData" :key='index' style="border:1px solid red">
+                <tr v-for="(x,index) in tableData" :key='index' style="border:1px solid red" @click="Tiao">
                     <td>{{x.timer}}</td>
                     <td>{{x.date}}</td>
                     <td>{{x.name}}</td>
@@ -68,6 +68,11 @@ export default {
     beforeMount(){
       this.$emit('integral',240)
     },
+    methods:{
+      Tiao(){
+        this.$router.push('/personal/integraldata')
+      }
+    }
 }
 </script>
 
@@ -76,7 +81,6 @@ export default {
     float: left;
     width:1083px;
     height:623px;
-    border:1px solid #e7e7e7;
 }
 .mibox1{
     height:56px;
