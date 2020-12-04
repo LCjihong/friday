@@ -1,6 +1,6 @@
 <template>
   <div class="particulars">
-   <topbar></topbar>
+   <!-- <topbar></topbar> -->
    <breadnav :config='routers'></breadnav>
     <div class="single" v-for="(item , index1) of commodity" :key="index1">
       <div class="detailsleft">

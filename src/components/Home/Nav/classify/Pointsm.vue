@@ -3,7 +3,7 @@
     <swiper :config="SwiperConf"></swiper>
      <div class="storeType">
         <div class="commodityOne">
-          <div class="peach"  v-for="(item , index) of commodity" :key="index">
+          <div class="peach"  v-for="(item , index) of commodity" :key="index" @click="Tioa">
             <img :src="item.img" alt="">
             <p class="storeText1">{{item.text1}}</p>
             <p class="storeText2">{{item.text2}}</p>
@@ -132,6 +132,11 @@ export default {
   ]
     }
   },
+  methods:{
+    Tioa(){
+      this.$router.push('/particulars')
+    }
+  }
 
 }
 </script>

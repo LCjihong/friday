@@ -135,7 +135,6 @@ export default {
     float: left;
     width:1083px;
     height:1079px;
-    border:1px solid #e7e7e7;
     position: relative;
     margin-bottom:40px;
 }

@@ -5,22 +5,22 @@
       <div class="recommend">
         <div class="item" v-for="(item, index) of Recommend" :key="index">
           <div class="info">
-            <p class="title" v-for="(title, idx) of item.title" :key="idx">
+            <p class="title" v-for="(title, idx) of item.wtit" :key="idx">
               {{ title }}
             </p>
-            <p class="desc" v-show="item.description">{{ item.description }}</p>
+            <p class="desc" v-show="item.wdesc">{{ item.wdesc }}</p>
           </div>
           <div class="img-box">
-            <img class="img" :src="item.img" />
+            <img class="img" :src="item.wimgurl" />
           </div>
           <img
             class="tag"
-            v-if="item.type == 1"
+            v-if="item.wtype == 1"
             src="http://renjihong.zone:2000/home/remai.png"
           />
           <img
             class="tag"
-            v-if="item.type == 2"
+            v-if="item.wtype == 2"
             src="http://renjihong.zone:2000/home/xinpin.png"
           />
         </div>
@@ -60,13 +60,13 @@
               <ul class="friday">
                 <li v-for="(item, index) of group" :key="index">
                   <div class="img-box">
-                    <img :src="item.img" />
+                    <img :src="item.fimgurl" />
                   </div>
-                  <p class="title">{{ item.title }}</p>
-                  <p class="desc">{{ item.desc }}</p>
+                  <p class="title">{{ item.cname }}</p>
+                  <p class="desc">{{ item.cdesc }}</p>
                   <p class="price">
                     <span>礼拜五价:</span>
-                    <em class="iconfont icon-fl-renminbi">{{ item.price }}</em>
+                    <em class="iconfont icon-fl-renminbi">{{ item.fprice }}</em>
                   </p>
                 </li>
               </ul>
@@ -122,279 +122,51 @@ export default {
           "http://renjihong.zone:2000/home/swiper1.png",
         ],
       },
-      Recommend: [
-        {
-          type: 1,
-          title: ["内蒙古草原", "羔羊羊精肉"],
-          img: "http://renjihong.zone:2000/home/recommend1.png",
-        },
-        {
-          type: 2,
-          title: ["新西兰柠檬"],
-          description: "柠香清新",
-          img: "http://renjihong.zone:2000/home/recommend2.png",
-        },
-        {
-          type: 1,
-          title: ["内蒙古草原", "羔羊羊精肉"],
-          img: "http://renjihong.zone:2000/home/recommend3.png",
-        },
-        {
-          type: 2,
-          title: ["新鲜草莓"],
-          description: "留住新鲜",
-          img: "http://renjihong.zone:2000/home/recommend4.png",
-        },
-      ],
-      fridayInfo: [
-        [
-          {
-            title: "新西兰佳沛黄金奇异果",
-            desc: "6个装",
-            price: "28.80",
-            img: "http://renjihong.zone:2000/home/friday1.png",
-          },
-          {
-            title: "新西兰佳沛黄金奇异果",
-            desc: "6个装",
-            price: "28.80",
-            img: "http://renjihong.zone:2000/home/friday2.png",
-          },
-          {
-            title: "新西兰佳沛黄金奇异果",
-            desc: "6个装",
-            price: "28.80",
-            img: "http://renjihong.zone:2000/home/friday3.png",
-          },
-          {
-            title: "新西兰佳沛黄金奇异果",
-            desc: "6个装",
-            price: "28.80",
-            img: "http://renjihong.zone:2000/home/friday4.png",
-          },
-        ],
-        [
-          {
-            title: "新西兰佳沛黄金奇异果",
-            desc: "6个装",
-            price: "28.80",
-            img: "http://renjihong.zone:2000/home/friday1.png",
-          },
-          {
-            title: "新西兰佳沛黄金奇异果",
-            desc: "6个装",
-            price: "28.80",
-            img: "http://renjihong.zone:2000/home/friday2.png",
-          },
-          {
-            title: "新西兰佳沛黄金奇异果",
-            desc: "6个装",
-            price: "28.80",
-            img: "http://renjihong.zone:2000/home/friday3.png",
-          },
-          {
-            title: "新西兰佳沛黄金奇异果",
-            desc: "6个装",
-            price: "28.80",
-            img: "http://renjihong.zone:2000/home/friday4.png",
-          },
-        ],
-        [
-          {
-            title: "新西兰佳沛黄金奇异果",
-            desc: "6个装",
-            price: "28.80",
-            img: "http://renjihong.zone:2000/home/friday1.png",
-          },
-          {
-            title: "新西兰佳沛黄金奇异果",
-            desc: "6个装",
-            price: "28.80",
-            img: "http://renjihong.zone:2000/home/friday2.png",
-          },
-          {
-            title: "新西兰佳沛黄金奇异果",
-            desc: "6个装",
-            price: "28.80",
-            img: "http://renjihong.zone:2000/home/friday3.png",
-          },
-          {
-            title: "新西兰佳沛黄金奇异果",
-            desc: "6个装",
-            price: "28.80",
-            img: "http://renjihong.zone:2000/home/friday4.png",
-          },
-        ],
-        [
-          {
-            title: "新西兰佳沛黄金奇异果",
-            desc: "6个装",
-            price: "28.80",
-            img: "http://renjihong.zone:2000/home/friday1.png",
-          },
-          {
-            title: "新西兰佳沛黄金奇异果",
-            desc: "6个装",
-            price: "28.80",
-            img: "http://renjihong.zone:2000/home/friday2.png",
-          },
-          {
-            title: "新西兰佳沛黄金奇异果",
-            desc: "6个装",
-            price: "28.80",
-            img: "http://renjihong.zone:2000/home/friday3.png",
-          },
-          {
-            title: "新西兰佳沛黄金奇异果",
-            desc: "6个装",
-            price: "28.80",
-            img: "http://renjihong.zone:2000/home/friday4.png",
-          },
-        ],
-      ],
+      Recommend: [],
+      fridayInfo: [],
       commodGroupData: [
         {
           class:'iconfont icon-yingtao',
           title:'新鲜水果',
           desc:'采自新疆优质水果生产基地，品质一流',
-          data:[
-            {
-              img:'http://renjihong.zone:2000/home/fruit1.png',
-              title:'新西兰佳沛黄金奇异果',
-              desc:'果肉棉柔、花蜜般的甘甜白吃不厌',
-              price:'28.80',
-              oPrice:'40.00',
-            },
-            {
-              img:'http://renjihong.zone:2000/home/fruit2.png',
-              title:'新西兰佳沛黄金奇异果',
-              desc:'果肉棉柔、花蜜般的甘甜白吃不厌',
-              price:'28.80',
-              oPrice:'40.00',
-            },
-            {
-              img:'http://renjihong.zone:2000/home/fruit3.png',
-              title:'新西兰佳沛黄金奇异果',
-              desc:'果肉棉柔、花蜜般的甘甜白吃不厌',
-              price:'28.80',
-              oPrice:'40.00',
-            },
-            {
-              img:'http://renjihong.zone:2000/home/fruit4.png',
-              title:'新西兰佳沛黄金奇异果',
-              desc:'果肉棉柔、花蜜般的甘甜白吃不厌',
-              price:'28.80',
-              oPrice:'40.00',
-            },
-          ]
+          data:[]
         },
         {
           class:'iconfont icon-jiweixia',
           title:'水产海鲜',
           desc:'国内外新鲜到港的鱼虾蟹贝，我们全都有',
-          data:[
-            {
-              img:'http://renjihong.zone:2000/home/seafood1.png',
-              title:'新西兰佳沛黄金奇异果',
-              desc:'果肉棉柔、花蜜般的甘甜白吃不厌',
-              price:'28.80',
-              oPrice:'40.00',
-            },
-            {
-              img:'http://renjihong.zone:2000/home/seafood2.png',
-              title:'新西兰佳沛黄金奇异果',
-              desc:'果肉棉柔、花蜜般的甘甜白吃不厌',
-              price:'28.80',
-              oPrice:'40.00',
-            },
-            {
-              img:'http://renjihong.zone:2000/home/seafood3.png',
-              title:'新西兰佳沛黄金奇异果',
-              desc:'果肉棉柔、花蜜般的甘甜白吃不厌',
-              price:'28.80',
-              oPrice:'40.00',
-            },
-            {
-              img:'http://renjihong.zone:2000/home/seafood4.png',
-              title:'新西兰佳沛黄金奇异果',
-              desc:'果肉棉柔、花蜜般的甘甜白吃不厌',
-              price:'28.80',
-              oPrice:'40.00',
-            },
-          ]
+          data:[]
         },
         {
           class:'iconfont icon-rou',
           title:'肉类禽蛋',
           desc:'采自新疆优质水果生产基地，品质一流',
-          data:[
-            {
-              img:'http://renjihong.zone:2000/home/fruit1.png',
-              title:'新西兰佳沛黄金奇异果',
-              desc:'果肉棉柔、花蜜般的甘甜白吃不厌',
-              price:'28.80',
-              oPrice:'40.00',
-            },
-            {
-              img:'http://renjihong.zone:2000/home/fruit2.png',
-              title:'新西兰佳沛黄金奇异果',
-              desc:'果肉棉柔、花蜜般的甘甜白吃不厌',
-              price:'28.80',
-              oPrice:'40.00',
-            },
-            {
-              img:'http://renjihong.zone:2000/home/fruit3.png',
-              title:'新西兰佳沛黄金奇异果',
-              desc:'果肉棉柔、花蜜般的甘甜白吃不厌',
-              price:'28.80',
-              oPrice:'40.00',
-            },
-            {
-              img:'http://renjihong.zone:2000/home/fruit4.png',
-              title:'新西兰佳沛黄金奇异果',
-              desc:'果肉棉柔、花蜜般的甘甜白吃不厌',
-              price:'28.80',
-              oPrice:'40.00',
-            },
-          ]
+          data:[]
         },
         {
           class:'iconfont icon-niunairupin',
           title:'蛋奶速食',
           desc:'国内外新鲜到港的鱼虾蟹贝，我们全都有',
-          data:[
-            {
-              img:'http://renjihong.zone:2000/home/seafood1.png',
-              title:'新西兰佳沛黄金奇异果',
-              desc:'果肉棉柔、花蜜般的甘甜白吃不厌',
-              price:'28.80',
-              oPrice:'40.00',
-            },
-            {
-              img:'http://renjihong.zone:2000/home/seafood2.png',
-              title:'新西兰佳沛黄金奇异果',
-              desc:'果肉棉柔、花蜜般的甘甜白吃不厌',
-              price:'28.80',
-              oPrice:'40.00',
-            },
-            {
-              img:'http://renjihong.zone:2000/home/seafood3.png',
-              title:'新西兰佳沛黄金奇异果',
-              desc:'果肉棉柔、花蜜般的甘甜白吃不厌',
-              price:'28.80',
-              oPrice:'40.00',
-            },
-            {
-              img:'http://renjihong.zone:2000/home/seafood4.png',
-              title:'新西兰佳沛黄金奇异果',
-              desc:'果肉棉柔、花蜜般的甘甜白吃不厌',
-              price:'28.80',
-              oPrice:'40.00',
-            },
-          ]
+          data:[]
         }
       ]
     };
+  },
+  beforeMount(){
+    this.$axios.get('http://renjihong.zone:3000/recommend')
+    .then(resp => {
+      resp.data.forEach((value, index, arr) => {
+        this.commodGroupData[index].data = value;
+      })
+    });
+    this.$axios.get('http://renjihong.zone:3000/friday')
+    .then(resp => {
+      this.fridayInfo = resp.data;
+    })
+    this.$axios.get('http://renjihong.zone:3000/active')
+    .then(resp => {
+      this.Recommend = resp.data;
+    })
   },
   components:{
     Swiper,
@@ -590,6 +362,7 @@ export default {
 }
 .commodGroup .main{
   height: 473px;
+  overflow: hidden;
 }
 
 </style>

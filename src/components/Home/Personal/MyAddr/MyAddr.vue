@@ -22,7 +22,6 @@ methods:{
 .Myaddr{
   width: 1085px;
   height: 568px;
-  border: 1px solid gainsboro;
 }
 .addrCentent{
   width: 360px;

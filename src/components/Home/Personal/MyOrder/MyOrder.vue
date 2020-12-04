@@ -15,7 +15,7 @@
                 <span>|</span>
                 <router-link to="/2/4">待收货</router-link>
                 <span>|</span>
-                <router-link to="/2/5">待评价</router-link>
+                <router-link to="/personal/orderevalua">待评价</router-link>
                 <span>|</span>
                 <router-link to="/2/6">退款/售后</router-link>
                 <span>|</span>
@@ -51,7 +51,6 @@ export default {
     float:left;
     width:1083px;
     height:625px;
-    border:1px solid #e7e7e7;
     /* position: absolute; */
 }
 .mobox1{

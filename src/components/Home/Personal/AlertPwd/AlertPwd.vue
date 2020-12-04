@@ -161,7 +161,6 @@ export default {
 .Alert{
   width: 1085px;
   height: 568px;
-  border: 1px solid gainsboro;
 }
 .AlertLeft{
   float: left;

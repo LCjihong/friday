@@ -23,29 +23,38 @@ export default new Router({
           path: 'classify',
           component: () => import('@/components/Home/Nav/Classify'),
           children: [
-          {
-            path: 'friday',
-            component: () => import('@/components/Home/Nav/Classify/Friday/Friday.vue')
-          },
-          {
-            path:'nav',
-            component: () =>
-            import ('../components/Home/Nav/Classify/Nav.vue')
-          },
-          {
-            path:'newreigistrat',
-            component: () =>
-            import ('../components/Home/Nav/Classify/NewRegistration/NewRegistration.vue')
-          },
+            {
+              path: 'friday',
+              component: () => import('@/components/Home/Nav/Classify/Friday/Friday.vue')
+            },
+            {
+              path:'nav',
+              component: () =>
+              import ('../components/Home/Nav/Classify/Nav.vue')
+            },
+            {
+              path:'newreigistrat',
+              component: () =>
+              import ('../components/Home/Nav/Classify/NewRegistration/NewRegistration.vue')
+            },
             {
               path: 'merchant',
               component: () => import('@/components/Home/Nav/Classify/Merchant/Merchant')
+            },
+            {
+              path: 'search/:keyword',
+              component: () => import('@/components/Home/Nav/Classify/Search/Search')
             }
           ]
         },
         {
           path: 'pointsm',
           component: () => import('@/components/Home/Nav/Classify/Pointsm.vue')
+        },
+        {
+          path:'/particulars',
+          component: () =>
+          import ('@/components/Home/Nav/Classify/Pointsm/Particulars')
         },
         {
           path: 'city',
@@ -77,6 +86,10 @@ export default new Router({
               component: () => import('@/components/Home/Personal/MyOrder/MyOrder')
             },
             {
+              path: 'orderevalua',
+              component: () => import('@/components/Home/Personal/MyOrder/OrderEvaluate')
+            },
+            {
               path: 'orderaeta',
               component: () => import('@/components/Home/Personal/MyOrder/OrderDetails')
             },
@@ -85,7 +98,10 @@ export default new Router({
               component: () => import('@/components/Home/Personal/MyBonuspoints/MyIntegral')
             },
             {
-              // src\components\Home\Personal\IntegraIorder\IntegralOrder.vue
+              path: 'integraldata',
+              component: () => import('@/components/Home/Personal/MyBonuspoints/IntegralDetails')
+            },
+            {
               path: 'integralorder',
               component: () => import('@/components/Home/Personal/IntegraIorder/IntegralOrder')
             },
@@ -199,11 +215,7 @@ export default new Router({
       }
     ]
     },
-    // {
-    //   path:'/particulars',
-    //   component: () =>
-    //   import ('../components/Home/Nav/Pointsm/Particulars.vue')
-    // },
+
     // {
     //   path:'/lineitem',
     //   component: () =>

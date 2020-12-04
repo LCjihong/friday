@@ -131,7 +131,6 @@ data() {
 .Mdata{
   width: 1085px;
   height: 568px;
-  border: 1px solid gainsboro;
 }
 .content{
   width: 1010px;

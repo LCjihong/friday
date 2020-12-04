@@ -52,7 +52,6 @@ export default {
 .Favor{
   width: 1085px;
   height: 568px;
-  border: 1px solid gainsboro;
   float: left;
   display: flex;
   justify-content: space-around;

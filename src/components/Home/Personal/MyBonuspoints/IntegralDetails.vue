@@ -2,7 +2,7 @@
 <div>
     <!-- 积分详情 -->
     <div class="idbox"></div>
-    <sidebar></sidebar>
+    <!-- <sidebar></sidebar> -->
     <div class="odbox">
         <div class="odbox1">
             <span>订单编号 : {{odmessage1}}</span>
@@ -185,7 +185,6 @@ export default {
     float:left;
     width:1083px;
     /* height:2000px; */
-    border:1px solid #e7e7e7;
     margin-bottom:60px;
     /* position: absolute; */
 }

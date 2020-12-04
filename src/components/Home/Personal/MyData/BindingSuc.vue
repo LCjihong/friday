@@ -20,7 +20,6 @@ export default {
 .originalPhone{
 width: 1085px;
 height: 568px;
-border: 1px solid gainsboro;
 }
 .nav1{
   width: 236px;

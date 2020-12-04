@@ -53,7 +53,6 @@ export default {
 .originalPhone{
 width: 1085px;
 height: 568px;
-border: 1px solid gainsboro;
 }
 .nav1{
   width: 236px;
@@ -95,7 +94,7 @@ text-align: center;
 .Alert{
   width: 1085px;
   height: 568px;
-  border: 1px solid gainsboro;
+
 }
 .AlertLeft{
   float: left;
@@ -122,7 +121,7 @@ text-align: center;
 .reset{
   float: right;
     width: 388px;
-    height:500px;
+    height:40px;
     background:white;
     /* border: 1px solid gainsboro; */
     padding-left:40px;

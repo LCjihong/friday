@@ -8,8 +8,8 @@
       </div>
       <div class="options">
         <span>您好,<a class="phone" href="#">123456789</a> <i>退出</i></span>
-        <span class="iconfont icon-anjianfengexian"><router-link to="">我的订单</router-link></span>
-        <span class="iconfont icon-anjianfengexian"><router-link to="">我的消息</router-link></span>
+        <span class="iconfont icon-anjianfengexian"><router-link to="/personal/morder">我的订单</router-link></span>
+        <span class="iconfont icon-anjianfengexian"><router-link to="/personal/mmessage">我的消息</router-link></span>
         <span class="iconfont icon-anjianfengexian"><router-link to="">我是商家</router-link></span>
         <i class="iconfont icon-anjianfengexian"></i>
         <span class="iconfont icon-rexiandianhua icon-anjianfengexian">400-800-8200</span>

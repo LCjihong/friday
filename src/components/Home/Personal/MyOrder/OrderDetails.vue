@@ -227,7 +227,6 @@ export default {
     float:left;
     width:1083px;
     /* height:2000px; */
-    border:1px solid #e7e7e7;
     margin-bottom:60px;
     /* position: absolute; */
 }

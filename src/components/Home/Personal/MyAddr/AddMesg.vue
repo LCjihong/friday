@@ -89,7 +89,6 @@ data () {
 .Addmsg{
  width: 1085px;
   height: 568px;
-  border: 1px solid gainsboro;
 }
 .lebble{
   width: 126px;
