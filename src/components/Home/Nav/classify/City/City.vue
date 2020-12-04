@@ -42,7 +42,6 @@ export default {
   },
   data(){
     return {
-
       swiperConfig:{
         height:'500px',
         data:[
@@ -165,6 +164,15 @@ export default {
       ]
     };
   },
+  beforeMount(){
+  //   this.$axios.post('http://renjihong.zone:3000/merchant/mercha',this.$qs.stringify({
+
+  //   })).then(function(res){
+  //     console.log(res)
+  //   }).catch(function(error){
+  //     console.log(error)
+  //   })
+  }
 }
 </script>
 

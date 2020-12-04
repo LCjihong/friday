@@ -14,7 +14,7 @@
                 <input type="text" placeholder="验证码" v-model="VerificationCode" @focus="handlefocus" @blur="verification">
             </div>
             <div class="reset_box2">
-               <img src="http://127.0.0.1:3000/captchas" alt="" ref = "change">
+               <img src="http://renjihong.zone:3000/user/captchas" alt="" ref = "change">
             </div>
             <p class="reset_code1" @click="handleCodel">看不清换一张</p>
         </div>
@@ -72,7 +72,7 @@ export default {
           }
       },
       handleCodel(){         // 验证码
-       this.$refs.change.src =`http://127.0.0.1:3000/captchas?time=${new Date()}`;
+       this.$refs.change.src =`http://renjihong.zone:3000/captchas?time=${new Date()}`;
       },
       handleblur(e){        // 表单失去焦点的样式
           e.path[1].style.border="1px solid #eeeeee"
@@ -114,7 +114,7 @@ export default {
       verification(e){
       e.path[1].style.border="1px solid gray";
       e.path[1].style.boxShadow="0px 0px 0px black";
-    this.$axios.post('http://127.0.0.1:3000/caps',this.$qs.stringify({
+    this.$axios.post('http://renjihong.zone:3000/caps',this.$qs.stringify({
       vfcnum:this.VerificationCode
     })).then(function(res){
      console.log(res)
@@ -126,7 +126,7 @@ export default {
     })
    },
    resetbtn(){
-     this.$axios.post('http://127.0.0.1:3000/resetpwd',this.$qs.stringify({
+     this.$axios.post('http://renjihong.zone:3000',this.$qs.stringify({
        uphone:this.CellPhoneNumber,
        upwd:this.passworldOne,
      })).then(function(res){

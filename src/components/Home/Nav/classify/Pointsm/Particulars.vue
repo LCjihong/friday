@@ -2,10 +2,10 @@
   <div class="particulars">
    <!-- <topbar></topbar> -->
    <breadnav :config='routers'></breadnav>
-    <div class="single" v-for="(item , index1) of commodity" :key="index1">
+    <div class="single" v-for="(item , index1) of list" :key="index1">
       <div class="detailsleft">
         <div class="detailsTop" >
-            <img :src="item.img" alt="">
+            <img :src="item.cimgurl" alt="">
         </div>
         <div class="detailsBtm">
           <p class="iconfont icon-goleft-baise leftjt"> </p>
@@ -18,7 +18,7 @@
         </div>
       </div>
       <div class="detailsRight"  v-for="(atex , index3) of detailsRight" :key="'info3-'+index3">
-      <p class="topTex">{{atex.title}}</p>
+      <p class="topTex">{{item.cname}}1200g</p>
       <div class="cenTex">
         <div class="cenTexleft">
           <p class="head">
@@ -33,23 +33,24 @@
       <div class="btmTex">
           <div class="btmTextop">
             <span class="textLe">
-              {{atex.integral}}
+              {{item.iprice}}积分
             </span>
             <span class="textRi">
-              价值：{{atex.value}}
+              价值：{{item.cprice}}
             </span>
           </div>
           <div class="btmTexA">
-             <span>请选择规格</span> <p>500g</p> <p>1000g</p> <p>2000g</p>
+             <span>请选择规格</span>
+             <p v-for="(spic,index) in speci" :key="index">{{spic}}g</p>
           </div>
           <div class="btmTexB">
-             <span>请选择规格</span> <p>500g</p> <p>1000g</p>
+             <!-- <span>请选择规格</span> <p>500g</p> <p>1000g</p> -->
           </div>
           <div class="btmTexC">
              <span>数 量：</span>
              <div class="btmBtn">
                <template>
-               <el-input-number class="btmBtnsss" v-model="num" @change="handleChange" :min="1" :max="10" label="描述文字"></el-input-number>
+               <el-input-number class="btmBtnsss" v-model="num"  :min="1" :max="10" label="描述文字"></el-input-number>
                </template>
              </div>
              <span class="liang">件</span>
@@ -150,22 +151,18 @@ export default {
   },
   data(){
     return{
+      list:'',
+      speci:'',
        num: 1,
         value: null,
         methods: {
-      handleChange(value) {
-        console.log(value);
-      }
+      // handleChange(value) {
+      //   console.log(value);
+      // }
     },
       routers:{
       routera:window.location.pathname
      },
-    commodity:[
-     {
-      num:1,
-      img:'http://renjihong.zone:2000/particulars/详情梨.jpg',
-    },
-    ],
     smallimg:[
       {
       num:1,
@@ -187,11 +184,8 @@ export default {
     detailsRight:[
       {
         num:1,
-        title:'新疆哈密瓜1500kg',
         head:"http://renjihong.zone:2000/particulars/详情商家头像.jpg",
         explain:'雀斑石榴持续热卖!云南蒙自石榴，原产波斯（今伊朗）—带，公元前二世纪时传入我国。是中国三大石榴之一，粒大皮薄汁多味甜爽口。雀斑石榴持续热卖!云南蒙自石榴，原产波斯（今伊朗)—带，公元前二世纪时传入我国。是中国三大石溜之一，粒大皮薄，汁多味甜爽口。',
-        integral:'500积分',
-        value:'￥20.0',
         evaluate:'http://renjihong.zone:2000/particulars/详情评价2星.jpg',
         share:'http://renjihong.zone:2000/particulars/详情分享到.jpg',
       }
@@ -253,6 +247,22 @@ export default {
       }
    ]
     }
+  },
+  mounted(){
+    console.log(this.$route.query.id)
+    this.$axios.post('http://renjihong.zone:3000/integeral/partic',this.$qs.stringify({
+      id: this.$route.query.id
+    })).then((res) => {
+      this.list = res.data
+      for(var i = 0;i < res.data.length;i++ ){
+      this.speci=res.data[i].cspecifications.split(',')
+      }
+    }).catch(function(err){
+      console.log(err)
+    })
+  },
+  methods:{
+
   }
 }
 </script>

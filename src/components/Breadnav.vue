@@ -14,18 +14,34 @@ export default {
        routers:this.config.routera,
     }
   },
+  watch: {
+    $route() {
+      this.changeLu();
+    }
+  },
+  methods: {
+    changeLu() {
+      console.log(1);
+      switch (this.routers) {
+        case '/classify/nav':
+        this.navcan = '首页>专题'
+        break;
+      case '/classify/newreigistrat':
+        this.navcan = '您当前的位置：首页>礼拜五商城>新用户注册'
+        break;
+      case '/classify/friday':
+        this.navcan = '您当前的位置：首页>全部商品>苹果>阿克苏'
+        break;
+       case '/particulars':
+        this.navcan = '您当前的位置：首页>全部商品>苹果'
+        break;
+      default:
+        break;
+    }
+    }
+  },
   beforeMount(){
-  switch (this.routers) {
-    case '/classify/nav':
-       this.navcan = '首页>专题'
-      break;
-     case '/particulars':
-       this.navcan = '您当前的位置：首页>全部商品>苹果>阿克苏'
-      break;
 
-    default:
-      break;
-  }
   }
 }
 </script>

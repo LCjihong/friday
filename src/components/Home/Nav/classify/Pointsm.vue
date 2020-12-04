@@ -3,11 +3,11 @@
     <swiper :config="SwiperConf"></swiper>
      <div class="storeType">
         <div class="commodityOne">
-          <div class="peach"  v-for="(item , index) of commodity" :key="index" @click="Tioa">
-            <img :src="item.img" alt="">
-            <p class="storeText1">{{item.text1}}</p>
-            <p class="storeText2">{{item.text2}}</p>
-            积分：<span class="inteGral">{{item.integral}}</span> 价值：<span class="valUE">{{item.value}}</span><br>
+          <div class="peach"  v-for="(item , index) of list" :key="index" @click="Tioa(item.cid)">
+            <img :src="item.cimgurl" alt="">
+            <p class="storeText1">{{item.cname}}</p>
+            <p class="storeText2">{{item.cdesc}}</p>
+            积分：<span class="inteGral">{{item.iprice}}</span> 价值：<span class="valUE">{{item.oprice}}</span><br>
              <button class="btn">立即兑换</button>
           </div>
         </div>
@@ -23,6 +23,7 @@ export default {
   },
   data(){
     return{
+      list:'',
        SwiperConf: {
         height: "500px",
         data: [
@@ -32,112 +33,24 @@ export default {
           "http://renjihong.zone:2000/login/积分商城1.jpg",
         ],
       },
-    commodity:[
-    {
-      num:1,
-      img:'http://renjihong.zone:2000/login/积分桃子.jpg',
-      text1:'新西兰佳沛黄金奇异果',
-      text2:'花蜜般的甘甜百吃不厌',
-      integral:'500',
-      value:'￥20.0'
-    },
-    {
-      num:2,
-      img:'http://renjihong.zone:2000/login/积分橘子.jpg',
-      text1:'新西兰佳沛黄金奇异果',
-      text2:'花蜜般的甘甜百吃不厌',
-      integral:'500',
-      value:'￥20.0'
-    },
-    {
-      num:3,
-      img:'http://renjihong.zone:2000/login/积分梨.jpg',
-      text1:'新西兰佳沛黄金奇异果',
-      text2:'花蜜般的甘甜百吃不厌',
-      integral:'500',
-      value:'￥20.0'
-    },
-    {
-      num:4,
-      img:'http://renjihong.zone:2000/login/积分红柚.jpg',
-      text1:'新西兰佳沛黄金奇异果',
-      text2:'花蜜般的甘甜百吃不厌',
-      integral:'500',
-      value:'￥20.0'
-    },
-     {
-      num:5,
-      img:'http://renjihong.zone:2000/login/积分桃子.jpg',
-      text1:'新西兰佳沛黄金奇异果',
-      text2:'花蜜般的甘甜百吃不厌',
-      integral:'500',
-      value:'￥20.0'
-    },
-    {
-      num:6,
-      img:'http://renjihong.zone:2000/login/积分橘子.jpg',
-      text1:'新西兰佳沛黄金奇异果',
-      text2:'花蜜般的甘甜百吃不厌',
-      integral:'500',
-      value:'￥20.0'
-    },
-    {
-      num:7,
-      img:'http://renjihong.zone:2000/login/积分梨.jpg',
-      text1:'新西兰佳沛黄金奇异果',
-      text2:'花蜜般的甘甜百吃不厌',
-      integral:'500',
-      value:'￥20.0'
-    },
-    {
-      num:8,
-      img:'http://renjihong.zone:2000/login/积分红柚.jpg',
-      text1:'新西兰佳沛黄金奇异果',
-      text2:'花蜜般的甘甜百吃不厌',
-      integral:'500',
-      value:'￥20.0'
-    },
-     {
-      num:9,
-      img:'http://renjihong.zone:2000/login/积分桃子.jpg',
-      text1:'新西兰佳沛黄金奇异果',
-      text2:'花蜜般的甘甜百吃不厌',
-      integral:'500',
-      value:'￥20.0'
-    },
-    {
-      num:10,
-      img:'http://renjihong.zone:2000/login/积分橘子.jpg',
-      text1:'新西兰佳沛黄金奇异果',
-      text2:'花蜜般的甘甜百吃不厌',
-      integral:'500',
-      value:'￥20.0'
-    },
-    {
-      num:11,
-      img:'http://renjihong.zone:2000/login/积分梨.jpg',
-      text1:'新西兰佳沛黄金奇异果',
-      text2:'花蜜般的甘甜百吃不厌',
-      integral:'500',
-      value:'￥20.0'
-    },
-    {
-      num:12,
-      img:'http://renjihong.zone:2000/login/积分红柚.jpg',
-      text1:'新西兰佳沛黄金奇异果',
-      text2:'花蜜般的甘甜百吃不厌',
-      integral:'500',
-      value:'￥20.0'
-    },
-  ]
     }
   },
   methods:{
-    Tioa(){
-      this.$router.push('/particulars')
+    Tioa(v){
+      // this.$router.push(`/particulars/?${v}`);
+      this.$router.push({path:'/particulars',query:{id:v}});
     }
-  }
+  },
+  beforeMount(){
+    this.$axios.post('http://renjihong.zone:3000/integeral/integ',this.$qs.stringify({})).then(res => {
+      // console.log(res)
 
+      this.list = res.data
+      // console.log(this.list)
+    }).catch(function(error){
+      // console.log(error)
+    })
+  }
 }
 </script>
 

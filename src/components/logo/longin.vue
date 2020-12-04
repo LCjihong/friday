@@ -24,7 +24,7 @@
          @focus="handlefocus">
        </div>
        <div class="vfctNum-tu">
-         <img src="http://127.0.0.1:3000/captchas" alt="" ref = "change">
+         <img src="http://renjihong.zone:3000/user/captchas" alt="" ref = "change">
          <a @click="changes">看不清换一张</a>
        </div>
        <div class="forgetPwd">
@@ -67,13 +67,13 @@ export default {
   },
   methods:{
    changes(){
-     this.$refs.change.src =`http://127.0.0.1:3000/captchas?time=${new Date()}`;
+     this.$refs.change.src =`http://renjihong.zone:3000/user/captchas?time=${new Date()}`;
    },
   //验证码请求
    verification(e){
       e.path[1].style.border="1px solid gray";
       e.path[1].style.boxShadow="0px 0px 0px black";
-    this.$axios.post('http://127.0.0.1:3000/caps',this.$qs.stringify({
+    this.$axios.post('http://renjihong.zone:3000/user/caps',this.$qs.stringify({
       vfcnum:this.vfcnum
     })).then(function(res){
      console.log(res)
@@ -85,11 +85,12 @@ export default {
     })
    },
    logbtn(){
-     this.$axios.post('http://127.0.0.1:3000/loginbtn',this.$qs.stringify({
+     this.$axios.post('http://renjihong.zone:3000/user/loginbtn',this.$qs.stringify({
        uphone:this.phonenum,
        upwd:this.pwdnum,
      })).then(function(res){
        console.log(res)
+       window.sessionStorage.setItem('uid',res.data.uid)
        if(res.data.returned == '登录成功'){
          alert('登录成功')
        }else{
