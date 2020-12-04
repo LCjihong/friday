@@ -23,23 +23,27 @@ export default new Router({
           path: 'classify',
           component: () => import('@/components/Home/Nav/Classify'),
           children: [
-          {
-            path: 'friday',
-            component: () => import('@/components/Home/Nav/Classify/Friday/Friday.vue')
-          },
-          {
-            path:'nav',
-            component: () =>
-            import ('../components/Home/Nav/Classify/Nav.vue')
-          },
-          {
-            path:'newreigistrat',
-            component: () =>
-            import ('../components/Home/Nav/Classify/NewRegistration/NewRegistration.vue')
-          },
+            {
+              path: 'friday',
+              component: () => import('@/components/Home/Nav/Classify/Friday/Friday.vue')
+            },
+            {
+              path:'nav',
+              component: () =>
+              import ('../components/Home/Nav/Classify/Nav.vue')
+            },
+            {
+              path:'newreigistrat',
+              component: () =>
+              import ('../components/Home/Nav/Classify/NewRegistration/NewRegistration.vue')
+            },
             {
               path: 'merchant',
               component: () => import('@/components/Home/Nav/Classify/Merchant/Merchant')
+            },
+            {
+              path: 'search/:keyword',
+              component: () => import('@/components/Home/Nav/Classify/Search/Search')
             }
           ]
         },
@@ -77,43 +81,10 @@ export default new Router({
               path: 'rechargecard',
               component: () => import('@/components/Home/Personal/MyAccount/RechargeCard')
             },
-            // 
             {
               path: 'morder',
-              component: () => import('@/components/Home/Personal/MyOrder/MyOrder'),
-              redirect:'/personal/morder/morder',
-              children:[
-                {
-                  path: 'morder',
-                  component: () => import('@/components/Home/Personal/MyOrder/OrderEmpty/MyOrder'),
-                },
-                {
-                  path: 'morderone',
-                  component: () => import('@/components/Home/Personal/MyOrder/OrderEmpty/MyOrderone'),
-                },
-                {
-                  path: 'mordertwo',
-                  component: () => import('@/components/Home/Personal/MyOrder/OrderEmpty/MyOrdertwo'),
-                },
-                {
-                  path: 'morderthree',
-                  component: () => import('@/components/Home/Personal/MyOrder/OrderEmpty/MyOrderthree'),
-                },
-                {
-                  path: 'morderfour',
-                  component: () => import('@/components/Home/Personal/MyOrder/OrderEmpty/MyOrderfour'),
-                },
-                {
-                  path: 'morderfive',
-                  component: () => import('@/components/Home/Personal/MyOrder/OrderEmpty/MyOrderfive'),
-                },
-                {
-                  path: 'mordersix',
-                  component: () => import('@/components/Home/Personal/MyOrder/OrderEmpty/MyOrdersix'),
-                },
-              ]
+              component: () => import('@/components/Home/Personal/MyOrder/MyOrder')
             },
-            // 
             {
               path: 'orderevalua',
               component: () => import('@/components/Home/Personal/MyOrder/OrderEvaluate')

@@ -1,6 +1,6 @@
 <template>
 <!-- 新用户注册 -->
-<div class="NewBox">
+<el-row class="NewBox">
     <about-path></about-path>
     <about-friday></about-friday>
     <div class="aboutfridayright1">
@@ -24,7 +24,7 @@
             </div>
         </div>
     </div>
-</div>
+</el-row>
 </template>
 
 <script>
@@ -42,8 +42,7 @@ export default {
 <style scoped>
 .NewBox{
   width: 1280px;
-  margin: 0 auto;
-  /* margin-bottom: 20px; */
+  margin: 0 auto 20px;
 }
 .aboutfridayright1{
     float: left;

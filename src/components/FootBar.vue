@@ -31,9 +31,9 @@
         <div class="right">
           <ul v-for="(item, index) of footerInfo" :key="index">
             <li class="title">{{ item.title }}</li>
-            <li><a :href="item.link1.url">{{ item.link1.name }}</a></li>
-            <li><a :href="item.link2.url">{{ item.link2.name }}</a></li>
-            <li><a :href="item.link3.url">{{ item.link3.name }}</a></li>
+            <li><router-link :to="item.link1.url">{{ item.link1.name }}</router-link></li>
+            <li><router-link :to="item.link2.url">{{ item.link2.name }}</router-link></li>
+            <li><router-link :to="item.link3.url">{{ item.link3.name }}</router-link></li>
           </ul>
         </div>
     </el-row>
@@ -55,60 +55,60 @@ export default {
           title: "关于礼拜五",
           link1: {
             name: "新用户注册",
-            url: "http://127.0.0.1:8080/classify/newreigistrat",
+            url: "/classify/newreigistrat",
           },
           link2: {
-            name: "新用户注册",
-            url: "http://127.0.0.1:8080/classify/newreigistrat",
+            name: "在线下单",
+            url: "/classify/newreigistrat",
           },
           link3: {
-            name: "新用户注册",
-            url: "http://127.0.0.1:8080/classify/newreigistrat",
+            name: "支付方式",
+            url: "/classify/newreigistrat",
           },
         },
         {
-          title: "关于礼拜五",
+          title: "配送说明",
           link1: {
-            name: "新用户注册",
-            url: "http://127.0.0.1:8080/classify/newreigistrat",
+            name: "运费说明",
+            url: "/classify/newreigistrat",
           },
           link2: {
-            name: "新用户注册",
-            url: "http://127.0.0.1:8080/classify/newreigistrat",
+            name: "配送方式",
+            url: "/classify/newreigistrat",
           },
           link3: {
-            name: "新用户注册",
-            url: "http://127.0.0.1:8080/classify/newreigistrat",
+            name: "发票说明",
+            url: "/classify/newreigistrat",
           },
         },
         {
-          title: "关于礼拜五",
+          title: "售后服务",
           link1: {
-            name: "新用户注册",
-            url: "http://renjihong.zone",
+            name: "退换货说明",
+            url: "/classify/newreigistrat",
           },
           link2: {
-            name: "新用户注册",
-            url: "http://renjihong.zone",
+            name: "服务保障承诺",
+            url: "/classify/newreigistrat",
           },
           link3: {
-            name: "新用户注册",
-            url: "http://renjihong.zone",
+            name: "验货与签收",
+            url: "/classify/newreigistrat",
           },
         },
         {
-          title: "关于礼拜五",
+          title: "加盟礼拜五",
           link1: {
-            name: "新用户注册",
-            url: "http://renjihong.zone",
+            name: "加盟条款",
+            url: "/classify/newreigistrat",
           },
           link2: {
-            name: "新用户注册",
-            url: "http://renjihong.zone",
+            name: "公司简介",
+            url: "/classify/newreigistrat",
           },
           link3: {
-            name: "新用户注册",
-            url: "http://renjihong.zone",
+            name: "服务协议",
+            url: "/classify/newreigistrat",
           },
         }
       ],

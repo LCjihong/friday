@@ -1,14 +1,14 @@
 <template>
   <ul id="Commodity">
-    <li v-for="(item, index) of data" :key="index">
+    <li v-for="(item, index) of data" :key="item.cid" :style="{marginLeft:index % 4 == 0 ? '0' : '20px'}">
       <div class="img-box">
-        <img :src="item.img" />
+        <img :src="item.cimgurl" />
       </div>
-      <p class="title">{{ item.title }}</p>
-      <p class="desc">{{ item.desc }}</p>
+      <p class="title">{{ item.cname }}</p>
+      <p class="desc">{{ item.cdesc }}</p>
       <p class="price">
-        <em class="iconfont icon-fl-renminbi">{{ item.price }}</em>
-        <i class="iconfont icon-fl-renminbi">{{ item.oPrice }}</i>
+        <em class="iconfont icon-fl-renminbi">{{ item.cprice }}</em>
+        <i class="iconfont icon-fl-renminbi">{{ item.oprice }}</i>
       </p>
       <span class="iconfont icon-gouwuche cart" @click="open"></span>
     </li>
@@ -59,13 +59,12 @@ export default {
 <style scoped>
 #Commodity{
   height: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  width: 100%;
 }
 #Commodity li{
   width: 305px;
   height: 433px;
+  float: left;
   box-sizing: border-box;
   border: 1px solid #dddddd;
   position: relative;

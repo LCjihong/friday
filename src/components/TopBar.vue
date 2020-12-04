@@ -8,10 +8,10 @@
         <div class="search-input">
           <div class="input-box">
             <input type="text" v-model="keyword" placeholder="请输入关键字进行搜索">
-            <i class="iconfont icon-sousuo"></i>
+            <i class="iconfont icon-sousuo" @click="search"></i>
             <div class="hotword">
               <em>热门:</em>
-              <span v-for="(value, index) of hotword" :key="index">{{ value }}</span>
+              <span v-for="(value, index) of hotword" style="cursor:pointer" :key="index" @click="hotsearch(value)">{{ value }}</span>
             </div>
           </div>
         </div>
@@ -38,9 +38,8 @@
               <div class="info">
                 <div v-for="(list, idx) of item.details" :key="idx">
                   <strong v-for="(value, i) of list" :key="i">
-
-                  <i :class="{'iconfont icon-anjianfengexian':i != 0}"></i>
-                  <router-link to="" tag="i" style="cursor:pointer">{{ value }}</router-link>
+                    <i :class="{'iconfont icon-anjianfengexian':i != 0}"></i>
+                    <router-link to="" tag="i" style="cursor:pointer">{{ value }}</router-link>
                   </strong>
                 </div>
               </div>
@@ -544,6 +543,12 @@ export default {
     changeDetails(index){
       this.detailsData = this.menuData[index].data;
       this.activeMenuOption = index;
+    },
+    search(){
+      window.location.pathname = '/classify/search/' + this.keyword;
+    },
+    hotsearch(keyword){
+       window.location.pathname = '/classify/search/' + keyword;
     }
   }
 };
@@ -594,6 +599,7 @@ export default {
   font-size: 22px;
   text-align: center;
   color: white;
+  cursor: pointer;
 }
 .hotword{
   position: absolute;
