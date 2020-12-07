@@ -22,20 +22,19 @@ export default new Router({
         {
           path: 'classify',
           component: () => import('@/components/Home/Nav/Classify'),
-          children: [
-            {
+          children: [{
               path: 'friday',
               component: () => import('@/components/Home/Nav/Classify/Friday/Friday.vue')
             },
             {
-              path:'nav',
+              path: 'nav',
               component: () =>
-              import ('../components/Home/Nav/Classify/Nav.vue')
+                import('../components/Home/Nav/Classify/Nav.vue')
             },
             {
-              path:'newreigistrat',
+              path: 'newreigistrat',
               component: () =>
-              import ('../components/Home/Nav/Classify/NewRegistration/NewRegistration.vue')
+                import('../components/Home/Nav/Classify/NewRegistration/NewRegistration.vue')
             },
             {
               path: 'merchant',
@@ -52,9 +51,9 @@ export default new Router({
           component: () => import('@/components/Home/Nav/Classify/Pointsm.vue')
         },
         {
-          path:'/particulars',
+          path: '/particulars',
           component: () =>
-          import ('@/components/Home/Nav/Classify/Pointsm/Particulars')
+            import('@/components/Home/Nav/Classify/Pointsm/Particulars')
         },
         {
           path: 'city',
@@ -63,9 +62,8 @@ export default new Router({
         {
           path: 'personal',
           component: () => import('@/components/Home/Personal/Personal'),
-          redirect:'/personal/maccount',
-          children:[
-            {
+          redirect: '/personal/maccount',
+          children: [{
               path: 'maccount',
               component: () => import('@/components/Home/Personal/MyAccount/MyAccount')
             },
@@ -172,9 +170,8 @@ export default new Router({
     {
       path: '/confirmaor',
       component: () => import('@/components/Home/Shopptro/confirmaor'),
-      redirect:'/confirmaor/addsite',
-      children:[
-        {
+      redirect: '/confirmaor/addsite',
+      children: [{
           path: 'addsite',
           component: () => import('@/components/Home/Shopptro/AddSite')
         },
@@ -189,51 +186,46 @@ export default new Router({
       component: () => import('@/components/Home/Shopptro/ShoppNull')
     },
     {
+      path: '/successsubmiss',
+      name: 'SuccessSubmiss',
+      component: () => import('@/components/Home/Shopptro/SuccessSubmiss')
+    },
+    {
       path: '/paymentsucce',
+      name: 'PaySuccess',
       component: () => import('@/components/Home/Shopptro/PaymentSucce')
     },
     {
       path: '/lr',
       name: 'LRhome',
       component: () =>
-      import ('../components/LRhome.vue'),
-      redirect:"/lr/login",
-      children:[{
-        path:'login',
-        component: () =>
-        import ('../components/logo/Longin.vue')
-      },
-      {
-        path:'Register',
-        component: () =>
-        import ('../components/logo/Register.vue')
-      },{
-        path:'Vcaphone',
-        component: () =>
-        import ('../components/logo/VcaofmPhone.vue')
-      },
-      {
-        path:'ForgetPwd',
-        component: () =>
-        import ('../components/logo/ResetPassword.vue')
-      }
-    ]
+        import('../components/LRhome.vue'),
+      redirect: "/lr/login",
+      children: [{
+          path: 'login',
+          component: () =>
+            import('../components/logo/Longin.vue')
+        },
+        {
+          path: 'Register',
+          component: () =>
+            import('../components/logo/Register.vue')
+        }, {
+          path: 'Vcaphone',
+          component: () =>
+            import('../components/logo/VcaofmPhone.vue')
+        },
+        {
+          path: 'ForgetPwd',
+          component: () =>
+            import('../components/logo/ResetPassword.vue')
+        }
+      ]
     },
-
-    // {
-    //   path:'/lineitem',
-    //   component: () =>
-    //   import ('../components/Home/Nav/Pointsm/Lineitem.vue')
-    // },
-    // {
-    //   path:'/succeed',
-    //   component: () =>
-    //   import ('../components/Home/Nav/Pointsm/Succeed.vue')
-    // },
     {
-      path:'/mdata',
+      path: '/mdata',
       component: () =>
-      import ('../components/Home/Personal/MyData/MyData.vue')
+        import('../components/Home/Personal/MyData/MyData.vue')
     },
   ]
 })
