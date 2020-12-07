@@ -1,7 +1,6 @@
 <template>
 <div class="TouTop">
-       <img src="http://renjihong.zone:2000/login/logo.jpg" alt="">
-
+       <img src="http://renjihong.zone:2000/login/logo.jpg" style="cursor:pointer" @click="$router.push({path:'/'})" alt="">
        <div class="TouToptex">
          <el-breadcrumb separator-class="el-icon-arrow-right">
             <el-breadcrumb-item>我的购物车</el-breadcrumb-item>

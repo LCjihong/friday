@@ -196,7 +196,6 @@ export default new Router({
     },
     {
       path: '/commodata',
-      name: 'CommDesc',
       component: () => import('@/components/Home/Nav/commodata')
     },
     {

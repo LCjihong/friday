@@ -13,7 +13,7 @@
             <p
               class="smallTu"
               v-for="value in 4"
-              :key="value"
+              :key="'info1-' +value"
             >
               <img :src="commData.cimgurl" alt="" />
             </p>
@@ -40,14 +40,14 @@
         </div>
         <div class="btmTex">
           <div class="btmTextop">
-            <span class="textLe"> 现价：{{ commData.cprice[choice] }} </span>
-            <span class="textRi"> 原价：￥{{ commData.oprice[choice] }} </span>
+            <span class="textLe"> 现价：{{ cprice[choice] }} </span>
+            <span class="textRi"> 原价：￥{{ oprice[choice] }} </span>
           </div>
           <div class="btmTexA">
             <span>请选择规格</span>
             <p 
             v-for="(spic, index) in commData.cspecifications" 
-            :key="index" 
+            :key="'info2-' +index" 
             :style="{backgroundColor:choice == index ? '#f08200' : 'gainsboro',cursor:'pointer'}" 
             @click="choice = index">{{ spic }}</p>
           </div>
@@ -66,7 +66,7 @@
               </template>
             </div>
             <span class="liang">件</span>
-            <button class="btmBtns" @click="buyNow">立即购买</button>
+            <button class="btmBtns" @click="buyNow">加入购物车</button>
           </div>
           <div class="share">
             <img :src="commData.uimgurl" alt="" />
@@ -169,19 +169,26 @@ export default {
   },
   data() {
     return {
+      cspecifications:'',
       speci: "",
+      smallimg:'',
+      detailsRight:'',
+      value: null,
+      commData:'',
+      parEva1:'',
+      parEva2:'',
+      parEva3:'',
       num: 1,
       value: null,
       methods: {
-        // handleChange(value) {
-        //   console.log(value);
-        // }
       },
       choice:0,
       routers: {
         routera: window.location.pathname,
       },
       commData:{},
+      cprice:[],
+      oprice:[],
       smallimg: [
         {
           num: 1,
@@ -278,11 +285,13 @@ export default {
     };
   },
   beforeMount(){
-    let cid = this.$route.params.cid;
+    let cid = this.$route.query.cid;
     this.$axios.get(`/commodity/sel_id?cid=${cid}`)
     .then(resp => {
       resp.data[0].oprice = resp.data[0].oprice.split(',');
+      this.oprice = resp.data[0].oprice;
       resp.data[0].cprice = resp.data[0].cprice.split(',');
+      this.cprice = resp.data[0].cprice;
       resp.data[0].cspecifications = resp.data[0].cspecifications.split(',');
       this.commData = resp.data[0];
     })
@@ -296,7 +305,10 @@ export default {
         c_mount:this.num,
         c_price:this.commData.cprice[this.choice],
       })).then(resp => {
-        console.log(resp);
+        this.$message({
+          message: "添加购物车成功",
+          type: "success",
+        });
       })
     }
   },

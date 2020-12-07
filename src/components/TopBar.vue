@@ -18,7 +18,7 @@
       </div>
       <div class="btn-box">
         <router-link to="/personal" tag="span"><el-button plain type="info"><i class="iconfont icon-yonghu">个人中心</i></el-button></router-link>
-        <router-link to="/cart" tag="span"><el-button plain type="info"><i class="iconfont icon-gouwuche">购物车</i></el-button></router-link>
+        <router-link to="/cart" tag="span"><el-badge :value="cartCount == 0 ? null : cartCount"><el-button plain type="info"><i class="iconfont icon-gouwuche">购物车</i></el-button></el-badge></router-link>
       </div>
     </el-row>
     <el-row class="nav-box">
@@ -536,7 +536,8 @@ export default {
             },
           ]
         }
-      ]
+      ],
+      cartCount:0
     }
   },
   methods:{
@@ -549,6 +550,14 @@ export default {
     },
     hotsearch(keyword){
        window.location.pathname = '/classify/search/' + keyword;
+    }
+  },
+  beforeMount(){
+    if (sessionStorage.getItem('uid')) {
+      this.$axios.get(`/cart/count_uid?uid=${sessionStorage.getItem('uid')}`)
+      .then(resp => {
+        this.cartCount = resp.data.count;
+      })
     }
   }
 };

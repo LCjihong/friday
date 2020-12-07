@@ -58,7 +58,11 @@
           >
             <el-carousel-item v-for="(group, index) of fridayInfo" :key="index">
               <ul class="friday">
-                <li v-for="(item, index) of group" :key="index" @click="handleClick(item.cid)">
+                <li
+                  v-for="(item, index) of group"
+                  :key="index"
+                  @click="handleClick(item.cid)"
+                >
                   <div class="img-box">
                     <img :src="item.fimgurl" />
                   </div>
@@ -75,7 +79,7 @@
               <li
                 v-for="index in fridayInfo.length"
                 :key="index"
-                @click="changeItem(index - 1,)"
+                @click="changeItem(index - 1)"
                 :style="{
                   backgroundColor: index - 1 == Idx ? '#4b943d' : '#b0b0b0',
                   width: index - 1 == Idx ? '10px' : '8px',
@@ -86,7 +90,11 @@
           </el-carousel>
         </el-main>
       </div>
-      <el-row class="commodGroup" v-for="(item, index) of commodGroupData" :key="index">
+      <el-row
+        class="commodGroup"
+        v-for="(item, index) of commodGroupData"
+        :key="index"
+      >
         <el-header class="header" height="100px">
           <div class="left">
             <i :class="item.class"></i>
@@ -98,20 +106,61 @@
           </div>
         </el-header>
         <el-main class="main">
-          <commodity :data="item.data"></commodity>
+          <commodity :data="item.data" @show-box="showBox(arguments)"></commodity>
         </el-main>
       </el-row>
     </div>
+    <el-dialog
+      title="请选择产品规格"
+      customClass="customWidth"
+      :visible.sync="dialogVisible"
+      width="600px"
+    >
+      <div class="asbox1">
+        <div class="asbox2">
+          <span>现价 : ￥{{ parseFloat(box_cprice[box_choice] * num).toFixed(1) }}</span>
+          <span>原价 : ￥{{ parseFloat(box_oprice[box_choice] * num).toFixed(1) }}</span>
+        </div>
+        <div class="asbox3">
+          <!-- <p>请选择充值的金额 : </p> -->
+          <span>请选择规格</span>
+          <div 
+          @click="box_choice = index" 
+          v-for="(value, index) of boxData.cspecifications" 
+          :key="index"
+          :style="{
+            backgroundColor:index == box_choice ? '#f4fff2' : 'white',
+            border:index == box_choice ? '1px solid #4b943d' : '1px solid #d4d4d4'
+          }">{{ value }}</div>
+        </div>
+        <div>
+          <span>数量 : </span>
+          <el-input-number
+            v-model="num"
+            :min="1"
+          ></el-input-number>
+          <span> 件</span>
+        </div>
+      </div>
+      <!-- 返回和保存 -->
+      <span slot="footer" class="dialog-footer">
+        <div class="swbox3">
+          <el-button :plain="true" class="swbox4" @click="ashandel1">
+            <span>添加到购物车</span>
+          </el-button>
+        </div>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
 <script>
-import Swiper from '@/components/Swiper'
-import Commodity from '../../Commodity';
+import Swiper from "@/components/Swiper";
+import Commodity from "../../Commodity";
 export default {
   data() {
     return {
-      Idx:0,
+      Idx: 0,
       SwiperConf: {
         height: "500px",
         data: [
@@ -125,57 +174,71 @@ export default {
       fridayInfo: [],
       commodGroupData: [
         {
-          class:'iconfont icon-yingtao',
-          title:'新鲜水果',
-          desc:'采自新疆优质水果生产基地，品质一流',
-          data:[]
+          class: "iconfont icon-yingtao",
+          title: "新鲜水果",
+          desc: "采自新疆优质水果生产基地，品质一流",
+          data: [],
         },
         {
-          class:'iconfont icon-jiweixia',
-          title:'水产海鲜',
-          desc:'国内外新鲜到港的鱼虾蟹贝，我们全都有',
-          data:[]
+          class: "iconfont icon-jiweixia",
+          title: "水产海鲜",
+          desc: "国内外新鲜到港的鱼虾蟹贝，我们全都有",
+          data: [],
         },
         {
-          class:'iconfont icon-rou',
-          title:'肉类禽蛋',
-          desc:'采自新疆优质水果生产基地，品质一流',
-          data:[]
+          class: "iconfont icon-rou",
+          title: "肉类禽蛋",
+          desc: "采自新疆优质水果生产基地，品质一流",
+          data: [],
         },
         {
-          class:'iconfont icon-niunairupin',
-          title:'蛋奶速食',
-          desc:'国内外新鲜到港的鱼虾蟹贝，我们全都有',
-          data:[]
-        }
-      ]
+          class: "iconfont icon-niunairupin",
+          title: "蛋奶速食",
+          desc: "国内外新鲜到港的鱼虾蟹贝，我们全都有",
+          data: [],
+        },
+      ],
+      asmsg1: "20.0", // 商品的现价
+      asmsg2: "40.0", // 商品的原价
+      num: 1,
+      dialogVisible: false,
+      boxData:{},
+      box_cprice:[],
+      box_oprice:[],
+      box_choice:0,
+      asmes8: "",
+      model1: "500g",
+      proder: [
+        {
+          money1: "500g",
+          money2: "1000g",
+          money3: "2000g",
+        },
+      ],
     };
   },
-  beforeMount(){
-    this.$axios.get('/recommend')
-    .then(resp => {
+  beforeMount() {
+    this.$axios.get("/recommend").then((resp) => {
       resp.data.forEach((value, index, arr) => {
         value.forEach((v, i, ar) => {
-          ar[i].cprice = parseInt(v.cprice.split(',')[0]).toFixed(1);
-          ar[i].oprice = parseInt(v.oprice.split(',')[0]).toFixed(1);
-        })
+          ar[i].cprice = parseInt(v.cprice.split(",")[0]).toFixed(1);
+          ar[i].oprice = parseInt(v.oprice.split(",")[0]).toFixed(1);
+        });
         this.commodGroupData[index].data = value;
-      })
+      });
     });
-    this.$axios.get('/friday')
-    .then(resp => {
+    this.$axios.get("/friday").then((resp) => {
       this.fridayInfo = resp.data;
-    })
-    this.$axios.get('/active')
-    .then(resp => {
+    });
+    this.$axios.get("/active").then((resp) => {
       this.Recommend = resp.data;
-    })
+    });
   },
-  components:{
+  components: {
     Swiper,
-    Commodity
+    Commodity,
   },
-  methods:{
+  methods: {
     changeIdx(index) {
       this.Idx = index;
     },
@@ -183,16 +246,46 @@ export default {
       this.$refs.carousel.setActiveItem(index);
       this.Idx = index;
     },
-    handleClick(cid){
+    handleClick(cid) {
       this.$router.push({
-        name:'CommDesc',
-        params:{
+        path: "/commodata",
+        query: {
           cid
-        }
+        },
+      });
+    },
+    showBox(arg){
+      let cid = arg[1];
+      this.$axios.get(`/commodity/sel_id?cid=${cid}`)
+      .then(resp => {
+        resp.data[0].cprice = resp.data[0].cprice.split(',');
+        resp.data[0].oprice = resp.data[0].oprice.split(',');
+        resp.data[0].cspecifications = resp.data[0].cspecifications.split(',');
+        this.boxData = resp.data[0];
+        this.box_cprice = resp.data[0].cprice;
+        this.box_oprice = resp.data[0].oprice;
+        this.dialogVisible = arg[0];
+        console.log(resp.data[0]);
       })
-    }
-  }
-}
+    },
+    ashandel1() {
+      //  点击添加到购物车
+      this.$axios.post('/cart/insert', this.$qs.stringify({
+        cid:this.boxData.cid,
+        uid:sessionStorage.getItem('uid'),
+        c_cspecifications:this.boxData.cspecifications[this.box_choice],
+        c_mount:this.num,
+        c_price:this.box_cprice[this.box_choice]
+      })).then(resp => {
+        this.dialogVisible = false;
+        this.$message({
+          message: "添加购物车成功",
+          type: "success",
+        });
+      })
+    },
+  },
+};
 </script>
 
 <style>
@@ -233,7 +326,7 @@ export default {
 .recommend .desc {
   font-size: 16px;
 }
-.desc{
+.desc {
   color: #737373;
 }
 .recommend .img-box {
@@ -257,41 +350,41 @@ export default {
   color: #498e3d;
   line-height: 100px;
 }
-.header .left span{
+.header .left span {
   font-size: 30px;
   padding-right: 10px;
 }
-.header .left i{
+.header .left i {
   font-size: 36px;
   padding-right: 10px;
 }
-.header .left em{
+.header .left em {
   color: #666666;
   font-size: 24px;
   line-height: 110px;
 }
-.header .right{
+.header .right {
   float: right;
   line-height: 100px;
   height: 100px;
   font-size: 18px;
   font-weight: 200;
 }
-.header .right a{
+.header .right a {
   color: #666666;
 }
-.activity .header .right>div{
+.activity .header .right > div {
   float: left;
 }
-#countdown{
+#countdown {
   font-size: 0;
   padding-right: 10px;
 }
-#countdown em{
+#countdown em {
   font-size: 24px;
   color: #498e3d;
 }
-#countdown span{
+#countdown span {
   display: inline-block;
   width: 60px;
   height: 41px;
@@ -303,58 +396,58 @@ export default {
   text-align: center;
   margin: 0 10px;
 }
-#countdown i{
+#countdown i {
   font-size: 20px;
   color: #f08200;
 }
 .activity .main {
   height: 543px;
 }
-.main{
+.main {
   padding: 20px 0;
 }
-.activity .friday{
+.activity .friday {
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: space-between;
 }
-.activity .friday li{
+.activity .friday li {
   width: 305px;
   height: 433px;
   font-size: 18px;
   background-color: #eeeeee;
 }
-.img-box{
+.img-box {
   width: 100%;
   height: 305px;
   text-align: center;
   line-height: 305px;
 }
-.img-box img{
+.img-box img {
   vertical-align: middle;
 }
 
-.price em{
+.price em {
   font-size: 24px;
   font-weight: 900;
   color: #ff5757;
 }
-.price em::before{
+.price em::before {
   padding-right: 5px;
 }
-.activity .friday p{
+.activity .friday p {
   text-align: center;
   padding-bottom: 10px;
 }
-.activity .friday .desc{
+.activity .friday .desc {
   color: #666666;
 }
-.activity .friday .price span{
+.activity .friday .price span {
   color: #f08200;
   padding-right: 5px;
 }
-.changeIdx{
+.changeIdx {
   width: 154px;
   height: 18px;
   position: absolute;
@@ -366,14 +459,70 @@ export default {
   justify-content: space-around;
   align-items: center;
 }
-.changeIdx li{
+.changeIdx li {
   width: 8px;
   height: 8px;
   border-radius: 50%;
 }
-.commodGroup .main{
+.commodGroup .main {
   height: 473px;
   overflow: hidden;
 }
 
+
+.asbox{
+    font-size: 17px;
+    color:#333333;
+}
+.asbox1{
+    color:#666666;
+    font-size:18px;
+    padding-left:20px;
+    box-sizing: border-box;
+}
+.asbox2>span:nth-child(1){
+    color:#ff5757;
+    font-size: 28px;
+    margin-right:20px;
+}
+.asbox2>span:nth-child(2){
+    text-decoration: line-through;
+}
+.asbox2{
+    margin-bottom:30px;
+}
+
+.asbox3{
+    margin-bottom:30px;
+}
+.asbox3>div{
+    width:80px;
+    height:32px;
+    line-height: 32px;
+    text-align: center;
+    border:1px solid #d4d4d4;
+    display:inline-block;
+    margin-right:20px;
+    cursor: pointer;
+}
+.asbox3>div:nth-child(2){
+    background:#f4fff2;
+    border:1px solid #4b943d;
+}
+
+.swbox3{
+    width:100%;
+    height:35px;
+    margin-bottom:20px;
+}
+.swbox4{
+    width:191px;
+    height:35px;
+    background:#f08200;
+    color:white;
+    font-size: 17px;
+    border-radius: 6px;
+    float: left;
+    margin-left:40px;
+}
 </style>

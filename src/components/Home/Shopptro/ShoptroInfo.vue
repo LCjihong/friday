@@ -70,7 +70,7 @@ export default {
       .then(resp => {
         this.$router.go(0);
       })
-    }
+    },
   },
   created(){
     let sum = 0;

@@ -1,6 +1,10 @@
 <template>
   <ul id="Commodity">
-    <li v-for="(item, index) of data" :key="item.cid" :style="{marginLeft:index % 4 == 0 ? '0' : '20px'}" @click="handleClick(item.cid)">
+    <li 
+    v-for="(item, index) of data" 
+    :key="item.cid" 
+    :style="{marginLeft:index % 4 == 0 ? '0' : '20px'}" 
+    @click="handleClick(item.cid)">
       <div class="img-box">
         <img :src="item.cimgurl" />
       </div>
@@ -10,7 +14,7 @@
         <em class="iconfont icon-fl-renminbi">{{ item.cprice }}</em>
         <i class="iconfont icon-fl-renminbi">{{ item.oprice }}</i>
       </p>
-      <span class="iconfont icon-gouwuche cart" @click="open"></span>
+      <span class="iconfont icon-gouwuche cart" @click.stop="$emit('show-box', true, item.cid)"></span>
     </li>
   </ul>
 </template>
@@ -20,45 +24,13 @@ export default {
   name:'Commodity',
   props:['data'],
   methods:{
-    open(){
-      const h = this.$createElement;
-      this.$msgbox({
-        title: '请选择产品规格',
-        message: h('p', null, [
-          h('span', null, '内容可以是 '),
-          h('i', { style: 'color: teal' }, 'VNode')
-        ]),
-        showCancelButton: true,
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        beforeClose: (action, instance, done) => {
-          if (action === 'confirm') {
-            instance.confirmButtonLoading = true;
-            instance.confirmButtonText = '执行中...';
-            setTimeout(() => {
-              done();
-              setTimeout(() => {
-                instance.confirmButtonLoading = false;
-              }, 300);
-            }, 3000);
-          } else {
-            done();
-          }
-        }
-      }).then(action => {
-        this.$message({
-          type: 'info',
-          message: 'action: ' + action
-        });
-      });
-    },
     handleClick(cid){
       this.$router.push({
-        name:'CommDesc',
-        params:{
+        path:'/commodata',
+        query:{
           cid
         }
-      })
+      });
     }
   }
 }
