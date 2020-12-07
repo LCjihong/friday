@@ -1,6 +1,5 @@
 <template>
   <div class="particulars">
-   <!-- <topbar></topbar> -->
    <breadnav :config='routers'></breadnav>
     <div class="single" v-for="(item , index1) of list" :key="index1">
       <div class="detailsleft">
@@ -142,14 +141,17 @@
 
 <script>
 import topbar from "@/components/TopBar";
-import breadnav from '@/components/breadnav'
+import breadnav from '@/components/breadnav';
 export default {
   components:{
-    breadnav,
     topbar,
+    breadnav,
   },
   data(){
     return{
+      routers:{
+      rouTex:'您当前的位置：首页>全部商品>苹果>阿克苏'
+    },
       list:'',
       speci:'',
       xianjia:'',
