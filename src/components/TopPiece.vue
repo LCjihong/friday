@@ -139,7 +139,7 @@ export default {
 }
 .small-box {
   width: 387px;
-  height: 528px;
+  height: 530px;
   background-color: #fff;
 }
 </style>

@@ -100,6 +100,7 @@ export default {
           if (res.data.returned == "登录成功") {
             alert("登录成功");
             window.sessionStorage.setItem('uid',res.data.uid)
+            window.location.pathname = '/'
           } else {
             alert("登录失败");
           }

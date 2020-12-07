@@ -157,11 +157,11 @@
 
 <script>
 import topbar from "@/components/TopBar";
-import breadnav from "@/components/breadnav";
+import breadnav from '@/components/breadnav';
 export default {
-  components: {
-    breadnav,
+  components:{
     topbar,
+    breadnav,
   },
   data() {
     return {
@@ -181,7 +181,7 @@ export default {
         // }
       },
       routers: {
-        routera: window.location.pathname,
+        rouTex:'您当前的位置：首页>全部商品>苹果>阿克苏'
       },
       smallimg: [
         {

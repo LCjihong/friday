@@ -17,7 +17,7 @@
             <span>|</span>
             <router-link to="/2/7">已完成/关闭</router-link>
             <router-link to="/211">订单回收站</router-link>
-        </div> 
+        </div>
     </div> -->
     <div class="oebox1"  v-if="x.oemgs4=='已收货'?true:false" v-for="(x, index) in order" :key="index">
         <div class="oebox2">
@@ -132,7 +132,7 @@
                 <div class="oebox14">
                     <router-link :to="{ path: '/news', query: { userId: 1111}}">查看详情</router-link>
                     <div>申请退款</div>
-                    <div>去评价</div>
+                    <div @click="handle1">去评价</div>
                     <div>交易完成</div>
                 </div>
             </div>
@@ -141,7 +141,7 @@
     <div class="block mibox13">
         <el-pagination
         @size-change="handleSizeChange"
-        @current-change="handleCurrentChange" 
+        @current-change="handleCurrentChange"
         :current-page.sync="currentPage3"
         :page-size="5"
         layout="prev, pager, next, jumper"
@@ -197,7 +197,7 @@ export default {
                 oemgs9: '1',
                 oemgs10: '105.0',
                 oemgs11: '8.0',
-            },], 
+            },],
         }
     },
     methods:{
@@ -209,6 +209,9 @@ export default {
         },
         handleCurrentChange(val) {      // current-change current-page改变时会触发
             console.log(`当前页: ${val}`);
+        },
+        handle1(){
+             this.$router.push({ path:'/personal/orderevalua'})
         }
     },
 }
@@ -248,7 +251,7 @@ export default {
 .mobox3 a:last-child{
     float:right;
     color:#4b943d;
-    margin-right:16px; 
+    margin-right:16px;
     text-decoration: underline;
 }
 a.router-link-active{
