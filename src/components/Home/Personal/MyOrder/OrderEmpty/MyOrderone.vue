@@ -17,9 +17,9 @@
             <span>|</span>
             <router-link to="/2/7">已完成/关闭</router-link>
             <router-link to="/211">订单回收站</router-link>
-        </div> 
+        </div>
     </div> -->
-    <div class="oebox1"  v-if="x.oemgs4=='待付款'?true:false" v-for="(x, index) in order" :key="index">
+    <div class="oebox1"  v-if="x.oemgs4 == '待付款'"  v-for="(x, index) in order" :key="index">
         <div class="oebox2">
             <span>订单号 : {{x.oemgs1}}</span>
             <span>下单时间 : {{x.oemgs2}}</span>
@@ -53,7 +53,7 @@
                     <span>( 含运费 : ￥{{x.oemgs11}} )</span>
                 </div>
                 <div class="oebox11">
-                    <router-link :to="{ path: '/news', query: { userId: 1111}}">查看详情</router-link>
+                    <router-link :to="{ path: '/personal/orderaeta', query: { userId: 1111}}">查看详情</router-link>
                     <div @click="oehandle1(index)">删除订单</div>
                     <div>取消订单</div>
                 </div>
@@ -128,7 +128,7 @@
     <div class="block mibox13">
         <el-pagination
         @size-change="handleSizeChange"
-        @current-change="handleCurrentChange" 
+        @current-change="handleCurrentChange"
         :current-page.sync="currentPage3"
         :page-size="5"
         layout="prev, pager, next, jumper"
@@ -184,7 +184,7 @@ export default {
                 oemgs9: '1',
                 oemgs10: '105.0',
                 oemgs11: '8.0',
-            },], 
+            },],
         }
     },
     methods:{
@@ -235,7 +235,7 @@ export default {
 .mobox3 a:last-child{
     float:right;
     color:#4b943d;
-    margin-right:16px; 
+    margin-right:16px;
     text-decoration: underline;
 }
 a.router-link-active{

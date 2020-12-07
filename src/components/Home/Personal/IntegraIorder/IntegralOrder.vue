@@ -34,7 +34,7 @@
                         <span>积分 : {{x.iomessage9}}</span>
                     </div>
                     <div class="mibox12">
-                        <router-link to="/">查看详情</router-link>
+                        <router-link to="/personal/integraldata">查看详情</router-link>
                         <span @click="iohandle1">删除订单</span>
                     </div>
                 </div>
