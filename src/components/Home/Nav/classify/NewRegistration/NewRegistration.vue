@@ -42,7 +42,7 @@ export default {
 <style scoped>
 .NewBox{
   width: 1280px;
-  margin: 0 auto 20px;
+  margin: 0 auto;
 }
 .aboutfridayright1{
     float: left;

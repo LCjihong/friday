@@ -15,8 +15,9 @@ export default {
     }
   },
   watch: {
-    $route() {
-      this.changeLu();
+    $route(to) {
+      console.log(to)
+      // this.changeLu();
     }
   },
   methods: {

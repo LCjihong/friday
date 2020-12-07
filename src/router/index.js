@@ -162,6 +162,10 @@ export default new Router({
       ]
     },
     {
+      path: '/commodata',
+      component: () => import('@/components/Home/Nav/commodata')
+    },
+    {
       path: '/cart',
       component: () => import('@/components/Home/Shopptro/Shopptro')
     },

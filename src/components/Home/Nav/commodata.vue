@@ -19,6 +19,10 @@
       </div>
       <div class="detailsRight"  v-for="(atex , index3) of detailsRight" :key="'info3-'+index3">
       <p class="topTex">{{item.cname}}1200g</p>
+      <span class="subtitle1">全国</span>
+      <span class="subtitle2">礼拜五</span>
+      <span class="subtitle3">次日达</span>
+      <span class="subtitle4">自营</span>
       <div class="cenTex">
         <div class="cenTexleft">
           <p class="head">
@@ -33,10 +37,10 @@
       <div class="btmTex">
           <div class="btmTextop">
             <span class="textLe">
-              {{item.iprice}}积分
+              现价：{{item.iprice}}
             </span>
             <span class="textRi">
-              价值：{{xianjia}}
+              原价：￥{{item.cprice}}
             </span>
           </div>
           <div class="btmTexA">
@@ -153,7 +157,6 @@ export default {
     return{
       list:'',
       speci:'',
-      xianjia:'',
        num: 1,
         value: null,
         methods: {
@@ -254,11 +257,9 @@ export default {
     this.$axios.post('http://renjihong.zone:3000/integeral/partic',this.$qs.stringify({
       id: this.$route.query.id
     })).then((res) => {
-      console.log(res)
       this.list = res.data
       for(var i = 0;i < res.data.length;i++ ){
       this.speci=res.data[i].cspecifications.split(',')
-      this.xianjia=res.data[i].cprice.split(',')[0]
       }
     }).catch(function(err){
       console.log(err)
@@ -418,6 +419,7 @@ export default {
 }
 .textRi{
   margin-left: 35px;
+  text-decoration: line-through;
 }
 .btmTexA{
   width: 100%;
@@ -427,7 +429,7 @@ export default {
 }
 .btmTexB{
   width: 100%;
-  height: 34px;
+  /* height: 14px; */
   float: left;
   margin-top: 20px;
   /* background-color: gold; */
@@ -576,5 +578,36 @@ export default {
 .headRight1-im2 p img{
   width: 100%;
   height: 100%;
+}
+.subtitle1,.subtitle2,.subtitle3,.subtitle4{
+  height: 25px;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  line-height: 25px;
+  margin-bottom: 20px;
+}
+.subtitle1{
+  width: 65px;
+  background-color: green;
+  display: inline-block;
+}
+.subtitle2{
+  width: 80px;
+  margin-left: 20px;
+  background-color: orange;
+    display: inline-block;
+}
+.subtitle3{
+  width: 80px;
+  margin-left: 20px;
+  background-color: green;
+    display: inline-block;
+}
+.subtitle4{
+  width: 65px;
+  margin-left: 20px;
+  background-color: green;
+    display: inline-block;
 }
 </style>

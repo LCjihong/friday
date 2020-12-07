@@ -4,14 +4,16 @@
           <template slot="title">
             <i class="header-icon el-icon-info">展开收起其他地址</i>
           </template>
-        <div v-for="(item,index) of site" :key="index" class="siteBox">
+        <div v-for="(item,index) of list" :key="index" class="siteBox">
             <template>
-              <el-radio v-model="radio" :label="item.num" class="site1">但小兵 北京 北京市 昌平区 天通苑明天第一城4号楼101 固定电话010-21541589
-                 <el-button type="text"
-                 v-if="item.num != radio">设为默认地址</el-button>
-                 <el-button type="text" >修改</el-button>
-                 <el-button type="text" >删除</el-button>
+              <el-radio :label="item.num" class="site1">
+                {{item.aname}}{{item.aprovince}}{{item.acity}}{{item.acounty}}{{item.adetails}}{{item.aphone}}
              </el-radio>
+
+                 <span class="Obtn" type="text" @click="deletress(item.aid)">删除</span>
+                 <span class="Obtn" type="text" >修改</span>
+                 <span class="Obtn" type="text" v-if="item.adefault"
+                 @click="modiress(item.aid)">设为默认地址</span>
             </template>
         </div>
       </el-collapse-item>
@@ -23,27 +25,49 @@ export default {
  data(){
    return{
      adio: '',
-     num: 1,
-      site:[
-          {
-            num:1,
-            textSit:'但小兵 北京 北京市 昌平区 天通苑明天第一城4号楼101 固定电话010-21541589',
-          },
-          {
-            num:2,
-            textSit:'但小兵 北京 北京市 昌平区 天通苑明天第一城4号楼101 固定电话010-21541589',
-          },
-          {
-            num:3,
-            textSit:'但小兵 北京 北京市 昌平区 天通苑明天第一城4号楼101 固定电话010-21541589',
-          },
-          {
-            num:4,
-            textSit:'但小兵 北京 北京市 昌平区 天通苑明天第一城4号楼101 固定电话010-21541589',
-          },
-        ],
+     num: '',
+     list:'',
    }
- }
+ },
+ beforeMount(){
+  this.$axios.post('/address/address',this.$qs.stringify({
+    uid:sessionStorage.getItem('uid')
+  })).then(res => {
+    console.log(res)
+    this.list = res.data
+    for(var i = 0;i < res.data.length;i++){
+      this.num = res.data[i].adefault
+    }
+  }).catch(function(err){
+    console.log(err)
+  })
+},
+methods:{
+  //删除地址
+  deletress(ad){
+    this.$axios.post('/address/deleress',this.$qs.stringify({
+      aid:ad,
+    })).then(res => {
+      console.log(res)
+    }).catch(err=>{
+      console.log(err)
+    })
+  },
+  //修改默认地址
+  modiress(ad){
+    this.$axios.post('/address/modiress',this.$qs.stringify({
+      aid:ad,
+      uid:sessionStorage.getItem("uid"),
+      adefault:1,
+      bdefault:0,
+    })).then(res => {
+      console.log(res)
+      window.location.pathname = '/confirmaor/addsite';
+    }).catch(err=>{
+      console.log(err)
+    })
+  }
+}
 }
 </script>
 
@@ -55,6 +79,20 @@ export default {
   line-height: 40px;
   background-color: #f4fff2;
   float: left;
+  /* position: relative; */
   margin-top: 10px;
+}
+div /deep/ .el-collapse-item__content{
+  position: relative;
+}
+div /deep/.el-button{
+  position: absolute;
+  right: 0;
+}
+.Obtn{
+  float: right;
+  margin: 0 10px;
+  color: blue;
+  cursor: pointer;
 }
 </style>

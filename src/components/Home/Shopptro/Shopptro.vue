@@ -200,25 +200,25 @@ data () {
   height: 50px;
   position: relative;
   margin-top: 30px;
-  /* background-color: #959595; */
+
 }
 .topTexa{
-  /* float: left; */
+
   position: absolute;
   left: 50px;
-  /* top: 20px; */
+
   font-size: 18px;
   line-height: 50px;
 }
 .topnav{
   font-size: 18px;
   line-height: 50px;
-  /* float: left; */
+
   position: absolute;
   left: 0;
   color: #f08200;
   font-size: 30px;
-  /* margin-left: 0; */
+
 }
 .topBtn{
   width: 90px;
@@ -266,9 +266,7 @@ data () {
   font-size: 16px;
   background-color: #f2f2f2;
 }
-/* .conNav1{
-  margin-left: 58px;
-} */
+
 .conNav2{
   margin-left: 320px;
 }
@@ -399,7 +397,6 @@ margin-left: 145px;
   font-size: 20px;
   border-radius: 10px;
   margin-left: 20px;
-  /* margin-right: 30px; */
   background-color: #f08200;
   outline: none;
   border: 0;

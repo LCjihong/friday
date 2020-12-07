@@ -11,61 +11,51 @@
           <p class="tex3">详细地址：</p><p class="iconfont icon-shanhuxiaerqi tex1"></p>
       </span>
       <span class="tex2">
-           <p class="tex3">练习电话：</p><p class="iconfont icon-shanhuxiaerqi tex1"></p>
+           <p class="tex3">联系电话：</p><p class="iconfont icon-shanhuxiaerqi tex1"></p>
       </span>
     </div>
     <div class="InpTex">
         <div class="uName">
-          <input type="text">
+          <input type="text" v-model="uname">
         </div>
         <div class="region">
-          <el-dropdown size="small" split-button type="primary" >
-            北京市
-            <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item>上海市</el-dropdown-item>
-              <el-dropdown-item>天津市</el-dropdown-item>
-              <el-dropdown-item>郑州市</el-dropdown-item>
-              <el-dropdown-item>驻马店市</el-dropdown-item>
-            </el-dropdown-menu>
-          </el-dropdown>
+          <select class="seleTw" v-model="proxince">
+              <option>河南省</option>
+              <option>四川省</option>
+              <option>济南省</option>
+              <option>山东省</option>
+          </select>
+          <select class="seleTe" v-model="city">
+              <option>成都市</option>
+              <option>天津市</option>
+              <option>郑州市</option>
+              <option>驻马店市</option>
+          </select>
+          <select class="seleTx" v-model="county">
+              <option>金水区</option>
+              <option>西平县</option>
+              <option>温江县</option>
+              <option>河西区</option>
+          </select>
 
-          <el-dropdown size="small" split-button type="primary" class="regBtn">
-             北京市
-            <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item>上海市</el-dropdown-item>
-              <el-dropdown-item>天津市</el-dropdown-item>
-              <el-dropdown-item>郑州市</el-dropdown-item>
-              <el-dropdown-item>驻马店市</el-dropdown-item>
-            </el-dropdown-menu>
-          </el-dropdown>
-
-          <el-dropdown size="small" split-button type="primary" class="regBtn">
-            北京市
-            <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item>上海市</el-dropdown-item>
-              <el-dropdown-item>天津市</el-dropdown-item>
-              <el-dropdown-item>郑州市</el-dropdown-item>
-              <el-dropdown-item>驻马店市</el-dropdown-item>
-            </el-dropdown-menu>
-          </el-dropdown>
         </div>
         <div class="detaddr">
-            <input type="text">
+            <input type="text" v-model="dataAddress">
         </div>
         <div class="phoneS">
             <div class="Aphone">
-              <input type="text">
+              <input type="text" v-model="aphone">
             </div>
             <span>或固定电话</span>
             <div class="Bphone">
-              <input type="text">
+              <input type="text" >
             </div>
             <span>-</span>
             <div class="Cphone">
-              <input type="text">
+              <input type="text" placeholder="">
             </div>
         </div>
-        <button class="save">确认并设为默认地址</button>
+        <button class="save" @click="subBtn">确认并设为默认地址</button>
     </div>
   </div>
 </template>
@@ -74,9 +64,33 @@
 export default {
 data () {
       return {
-        radio: ''
+        uname:'',
+        proxince:'',
+        city:'',
+        county:'',
+        dataAddress:'',
+        aphone:'',
       };
-    }
+    },
+  methods:{
+     subBtn(){
+       this.$axios.post('/address/addsite',this.$qs.stringify({
+        uname:this.uname,
+        proxince:this.proxince,
+        city:this.city,
+        county:this.county,
+        dataAddress:this.dataAddress,
+        aphone:this.aphone,
+        adefault:1,
+        uid:sessionStorage.getItem("uid")
+       })).then(res => {
+         console.log(res)
+         window.location = '/confirmaor/addsite';
+       }).catch(err=>{
+         console.log(err)
+       })
+     }
+  }
 }
 </script>
 
@@ -200,5 +214,16 @@ div /deep/ .el-button--primary{
   font-size: 16px;
   border-radius: 5px;
   background-color: #f08200;
+}
+.seleTw,.seleTe,.seleTx{
+  width: 80px;
+  height: 35px;
+  outline: none;
+}
+.seleTe{
+  margin-left: 30px;
+}
+.seleTx{
+  margin-left: 30px;
 }
 </style>

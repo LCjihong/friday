@@ -16,6 +16,10 @@
 // 购物车头部导航
 export default {
  name:'ShoppTop',
+ data(){
+   return{}
+ },
+
 }
 </script>
 
