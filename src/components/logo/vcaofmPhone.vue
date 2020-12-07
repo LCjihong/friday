@@ -61,7 +61,7 @@ data:{},
   margin: 0 auto;
 } */
 .regcent{
-  width: 30.23%;
+  width: 100%;
   height: 100%;
   float: right;
   border: 1px solid gainsboro;

@@ -77,11 +77,11 @@ data(){
   },
 methods:{
    changes(){
-     this.$refs.change.src =`http://renjihong.zone:3000/captchas?time=${new Date()}`;
+     this.$refs.change.src =`http://renjihong.zone:3000/user/captchas?time=${new Date()}`;
    },
   //注册成功数据
   regbtn(){
-  this.$axios.post('http://renjihong.zone:3000/Register',this.$qs.stringify({
+  this.$axios.post('http://renjihong.zone:3000/user/Register',this.$qs.stringify({
        uphone:this.phonenum,
        upwd:this.pwdnum,
      })).then(function(res){
@@ -106,7 +106,7 @@ methods:{
           e.path[1].style.border="1px solid gray";
           e.path[1].style.boxShadow="0px 0px 0px black";
 
-           this.$axios.post('http://renjihong.zone:3000/caps',this.$qs.stringify({
+           this.$axios.post('http://renjihong.zone:3000/user/caps',this.$qs.stringify({
       vfcnum:this.vfcnum
       })).then(function(res){
      console.log(res)
@@ -123,7 +123,7 @@ methods:{
           if(regex.test(e.target.value)){
               var _this = this
                //查询是否存在然后注册
-                this.$axios.post('http://renjihong.zone:3000/inquire',this.$qs.stringify({
+                this.$axios.post('http://renjihong.zone:3000/user/inquire',this.$qs.stringify({
                     uphone:this.phonenum,
                   })).then(function(res){
                     if(res.data.returned == '已注册过'){
@@ -170,7 +170,7 @@ methods:{
   margin: 0 auto;
 } */
 .regcent{
-  width: 30.23%;
+  width: 100%;
   height: 100%;
   float: right;
   border: 1px solid gainsboro;

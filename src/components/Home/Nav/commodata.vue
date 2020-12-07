@@ -279,7 +279,7 @@ export default {
 .single{
   width: 100%;
   height: 630px;
-  /* background-color: pink; */
+
 }
 .commodityPar{
   width: 100%;

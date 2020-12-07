@@ -2,6 +2,7 @@
          <!-- 优先保障 -->
 <div class="Friday">
     <!-- <about-path></about-path> -->
+    <breadnav :config='routers'></breadnav>
     <div class="AboutPrioritybox">
         <div class="AboutPrioritybox1">
             <p>鲜果保障</p>
@@ -22,11 +23,21 @@
 
 <script>
 import AboutPath from '../AboutPath';
-export default{
-   name: 'AboutPriority',
+import breadnav from '@/components/breadnav';
+
+export default {
+   name:'AboutPriority',
    components:{
        AboutPath,
-   }
+        breadnav
+   },
+   data(){
+    return {
+      routers:{
+      rouTex:'您当前的位置：首页>全部商品>苹果>阿克苏',
+    }
+    }
+  }
 }
 </script>
 

@@ -73,7 +73,7 @@ methods:{
 
 <style scoped>
 .siteBox{
-  width: 1280px;
+  width: 1085px;
   height: 40px;
   border-radius: 5px;
   line-height: 40px;

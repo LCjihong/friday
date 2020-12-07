@@ -16,7 +16,9 @@
           </p>
         </div>
       </div>
-       <router-view @tptxe-message = 'tpTex = $event'></router-view>
+      <div class="topaaa">
+         <router-view @tptxe-message = 'tpTex = $event'></router-view>
+      </div>
      </div>
     </div>
   </div>
@@ -64,6 +66,11 @@ export default {
   height: 67px;
   margin-bottom: 30px;
   /* background-color:gainsboro; */
+}
+.topaaa{
+  width: 387px;
+  height: 500px;
+  float: right;
 }
 .center{
   width: 100%;

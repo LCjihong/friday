@@ -22,7 +22,7 @@
                 <input type="text" placeholder="验证码" v-model="VerificationCode" @focus="handlefocus" @blur="verification">
             </div>
             <div class="reset_box2">
-               <img src="http://127.0.0.1:3000/captchas" alt="" ref = "change">
+               <img src="http://renjihong.zone:3000/user/captchas" alt="" ref = "change">
             </div>
             <p class="reset_code1" @click="handleCodel">看不清换一张</p>
         </div>
@@ -39,7 +39,7 @@
      </div>
     </div>
     <div class="AlertRight">
-      <div class="succes">
+      <div class="succes" v-if="xianshi">
        <span class="iconfont icon-zhifuchenggong tex1"></span>
        <span class="tex2">恭喜您修改成功</span>
       </div>
@@ -55,6 +55,7 @@ export default {
   },
   data(){
       return {
+            xianshi:false,
             CellPhoneNumber:'',             // 手机号
             VerificationCode:'',            // 验证码
             passworldOne:'',                // 密码
@@ -81,7 +82,7 @@ export default {
           }
       },
       handleCodel(){         // 验证码
-       this.$refs.change.src =`http://127.0.0.1:3000/captchas?time=${new Date()}`;
+       this.$refs.change.src =`http://renjihong.zone:3000/user/captchas?time=${new Date()}`;
       },
       handleblur(e){        // 表单失去焦点的样式
           e.path[1].style.border="1px solid #eeeeee"
@@ -123,7 +124,7 @@ export default {
       verification(e){
       e.path[1].style.border="1px solid gray";
       e.path[1].style.boxShadow="0px 0px 0px black";
-    this.$axios.post('http://127.0.0.1:3000/caps',this.$qs.stringify({
+    this.$axios.post('http://renjihong.zone:3000/user/caps',this.$qs.stringify({
       vfcnum:this.VerificationCode
     })).then(function(res){
      console.log(res)
@@ -135,18 +136,21 @@ export default {
     })
    },
    resetbtn(){
-     this.$axios.post('http://127.0.0.1:3000/resetpwd',this.$qs.stringify({
+     this.$axios.post('http://renjihong.zone:3000/user/resetpwd',this.$qs.stringify({
        uphone:this.CellPhoneNumber,
        upwd:this.passworldOne,
-     })).then(function(res){
+     })).then((res)=>{
        console.log(res)
        if(res.data.returned == '重置成功'){
          alert('重置成功')
-         window.location = '/lr/login';
+         this.xianshi = true;
+        //  window.location = '';
        }else if(res.data.returned == '重置失败'){
          alert('重置失败')
+         this.xianshi = false;
        }else{
          alert('查询不到本机号')
+         this.xianshi = false;
        }
      }).catch(function(err){
        console.log(err)

@@ -54,7 +54,7 @@
          <div class="submit">
              <p class="dwtInteTex">限45个字，请填写有关商品、支付、发票等信息</p>
              <p class="dwtInte">应付积分：<span>500积分</span></p>
-             <button class="dwtBtn">确认兑换</button>
+             <button class="dwtBtn" @click="dwtBtn">确认兑换</button>
          </div>
         </div>
     </div>
@@ -122,6 +122,9 @@ data () {
    methods: {
       handleChange(val) {
         console.log(val);
+      },
+      dwtBtn(){
+        window.location='/succeed'
       }
     }
 }

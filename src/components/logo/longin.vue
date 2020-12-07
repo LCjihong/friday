@@ -124,8 +124,8 @@ export default {
 
 <style scoped>
 .log-box {
-  float: right;
-  width: 30.23%;
+  /* float: right; */
+  width: 100%;
   height: 100%;
   border: 1px solid gainsboro;
   background-color: white;

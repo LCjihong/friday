@@ -1,6 +1,7 @@
 <template>
 <!-- 新用户注册 -->
 <el-row class="NewBox">
+  <breadnav :config='routers'></breadnav>
     <about-path></about-path>
     <about-friday></about-friday>
     <div class="aboutfridayright1">
@@ -30,12 +31,21 @@
 <script>
 import AboutPath from '../AboutPath';
 import AboutFriday from '../AboutFriday';
+import breadnav from '@/components/breadnav'
 export default {
     name:"NewRegistration",
     components:{
         AboutPath,
         AboutFriday,
+        breadnav,
+    },
+    data(){
+    return {
+      routers:{
+      rouTex:'您当前的位置：首页>全部商品>苹果',
     }
+    }
+  }
 }
 </script>
 

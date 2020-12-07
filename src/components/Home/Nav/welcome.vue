@@ -75,7 +75,7 @@
               <li
                 v-for="index in fridayInfo.length"
                 :key="index"
-                @click="changeItem(index - 1)"
+                @click="changeItem(index - 1,)"
                 :style="{
                   backgroundColor: index - 1 == Idx ? '#4b943d' : '#b0b0b0',
                   width: index - 1 == Idx ? '10px' : '8px',
@@ -86,7 +86,6 @@
           </el-carousel>
         </el-main>
       </div>
-
       <el-row class="commodGroup" v-for="(item, index) of commodGroupData" :key="index">
         <el-header class="header" height="100px">
           <div class="left">

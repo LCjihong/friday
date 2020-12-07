@@ -1,6 +1,6 @@
 <template>
   <div class="classify">
-    <breadnav :config='routers'></breadnav>
+    <!-- <breadnav :config='routers'></breadnav> -->
     <router-view></router-view>
   </div>
 </template>
@@ -22,5 +22,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>
