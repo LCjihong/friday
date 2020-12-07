@@ -1,12 +1,12 @@
 <template>
   <div class="Favor">
-     <div class="peach"  v-for="(item , index) of commodity" :key="index">
-            <img :src="item.img" alt="">
-            <p class="storeText1">{{item.text1}}</p>
-            <p class="storeText2">{{item.text2}}</p>
-            <span class="inteGral">{{item.integral}}</span> <del class="valUE">{{item.value}}</del>
+     <div class="peach"  v-for="(item , index) of list" :key="index">
+            <img :src="item.cimgurl" alt="">
+            <p class="storeText1">{{item.cname}}</p>
+            <p class="storeText2">{{item.cdesc}}</p>
+            <span class="inteGral">￥{{speci}}</span> <del class="valUE">￥{{xianjia}}</del>
             <span class="iconfont icon-gouwuche1 che"></span><br>
-             <button class="btn" v-if="item.num != 1">取消收藏</button>
+             <button class="btn" v-if="item.num != 1" @click="delectColle(item.cid)">取消收藏</button>
              <button class="btn2" v-if="item.num == 1">已失效</button>
           </div>
   </div>
@@ -16,34 +16,33 @@
 export default {
  data(){
    return{
-
-      commodity:[
-    {
-      num:1,
-      img:'http://renjihong.zone:2000/login/积分桃子.jpg',
-      text1:'新西兰佳沛黄金奇异果',
-      text2:'花蜜般的甘甜百吃不厌',
-      integral:'￥28.80',
-      value:'￥40.0'
-    },
-    {
-      num:2,
-      img:'http://renjihong.zone:2000/login/积分橘子.jpg',
-      text1:'新西兰佳沛黄金奇异果',
-      text2:'花蜜般的甘甜百吃不厌',
-      integral:'￥28.80',
-      value:'￥40.0'
-    },
-    {
-      num:3,
-      img:'http://renjihong.zone:2000/login/积分梨.jpg',
-      text1:'新西兰佳沛黄金奇异果',
-      text2:'花蜜般的甘甜百吃不厌',
-      integral:'￥28.80',
-      value:'￥40.0'
-    },
-      ]
+      list:'',
+      speci:'',
+      xianjia:'',
    }
+ },
+ beforeMount(){
+   this.$axios.post('/collect/collect',this.$qs.stringify({})).
+   then((res) => {
+     console.log(res)
+     this.list = res.data
+     for(var i = 0;i < res.data.length;i++ ){
+      this.speci = res.data[i].cprice.split(',')[0]
+      this.xianjia = res.data[i].oprice.split(',')[0]
+      }
+   }).catch(err => {
+     console.log(err)
+   })
+ },
+methods:{
+delectColle(v){
+  this.$axios.post('/collect/dececolloe',this.$qs.stringify({
+    cid:v,
+  })).then((res) => {
+    console.log(res)
+    this.$router.go(0)
+  })
+}
  }
 }
 </script>

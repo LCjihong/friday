@@ -1,5 +1,6 @@
 <template>
   <div class="navigat">
+    <breadnav :config='routers'></breadnav>
     <div class="navig1">
     </div>
     <div class="navig2">
@@ -10,8 +11,19 @@
 </template>
 
 <script>
-export default {
+import breadnav from '@/components/breadnav'
 
+export default {
+ components:{
+    breadnav
+  },
+  data(){
+    return {
+      routers:{
+      rouTex:'首页>专题',
+    }
+    }
+  }
 }
 </script>
 

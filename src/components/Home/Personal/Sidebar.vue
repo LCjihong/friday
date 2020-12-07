@@ -12,7 +12,7 @@
 
     <p class="aboutfridayleft-box1">会员资料<span>></span></p>
     <router-link to="/personal/mdata">个人资料</router-link>
-    <router-link to="/personal/maddr">地址管理</router-link>
+    <router-link to="/personal/addr">地址管理</router-link>
     <router-link to="/personal/mfavorite">我的收藏</router-link>
     <router-link to="/personal/mbrowse">最近浏览</router-link>
     <router-link to="/personal/alertpwd">修改密码</router-link>

@@ -44,7 +44,6 @@
              <p v-for="(spic,index) in speci" :key="index">{{spic}}</p>
           </div>
           <div class="btmTexB">
-             <!-- <span>请选择规格</span> <p>500g</p> <p>1000g</p> -->
           </div>
           <div class="btmTexC">
              <span>数 量：</span>
@@ -54,10 +53,10 @@
                </template>
              </div>
              <span class="liang">件</span>
-             <button class="btmBtns">立即兑换</button>
+             <button class="btmBtns" @click="btmBtn">立即兑换</button>
           </div>
           <div class="share">
-               <img :src="atex.evaluate" alt="">
+               <img :src="atex.evaluate" alt="" @click="collect(item)">
                <span class="share1">收藏此商品</span>
                <span class="share2">分享到</span>
                <img :src="atex.share" alt="" class="shareImg">
@@ -265,7 +264,24 @@ export default {
     })
   },
   methods:{
-
+  btmBtn(){
+    window.location='/lineitem'
+  },
+  collect(item){
+    this.$axios.post('/collect/addcollect',this.$qs.stringify({
+      cname:item.cname,
+      cdesc:item.cdesc,
+      cprice:item.cprice,
+      oprice:item.oprice,
+      cspecifications:item.cspecifications,
+      cimgurl:item.cimgurl,
+      uid:sessionStorage.getItem('uid'),
+    })).then(res => {
+      alert('收藏成功')
+    }).catch(err => {
+      console.log(err)
+    })
+  }
   }
 }
 </script>
