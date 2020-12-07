@@ -175,11 +175,6 @@ export default {
       detailsRight: "",
       num: 1,
       value: null,
-      methods: {
-        // handleChange(value) {
-        //   console.log(value);
-        // }
-      },
       routers: {
         rouTex:'您当前的位置：首页>全部商品>苹果>阿克苏'
       },
