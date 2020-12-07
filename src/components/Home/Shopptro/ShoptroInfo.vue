@@ -68,11 +68,7 @@ export default {
     handleDel(c_id){
       this.$axios.post('/cart/delete', this.$qs.stringify({c_id}))
       .then(resp => {
-        console.log(resp);
-        //if(成功){删除dom元素 // 刷新页面}
-      })
-      .catch(err => {
-        console.log(err);
+        this.$router.go(0);
       })
     }
   },

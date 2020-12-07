@@ -58,7 +58,7 @@
           >
             <el-carousel-item v-for="(group, index) of fridayInfo" :key="index">
               <ul class="friday">
-                <li v-for="(item, index) of group" :key="index">
+                <li v-for="(item, index) of group" :key="index" @click="handleClick(item.cid)">
                   <div class="img-box">
                     <img :src="item.fimgurl" />
                   </div>
@@ -153,7 +153,7 @@ export default {
     };
   },
   beforeMount(){
-    this.$axios.get('http://renjihong.zone:3000/recommend')
+    this.$axios.get('/recommend')
     .then(resp => {
       resp.data.forEach((value, index, arr) => {
         value.forEach((v, i, ar) => {
@@ -163,11 +163,11 @@ export default {
         this.commodGroupData[index].data = value;
       })
     });
-    this.$axios.get('http://renjihong.zone:3000/friday')
+    this.$axios.get('/friday')
     .then(resp => {
       this.fridayInfo = resp.data;
     })
-    this.$axios.get('http://renjihong.zone:3000/active')
+    this.$axios.get('/active')
     .then(resp => {
       this.Recommend = resp.data;
     })
@@ -184,6 +184,14 @@ export default {
       this.$refs.carousel.setActiveItem(index);
       this.Idx = index;
     },
+    handleClick(cid){
+      this.$router.push({
+        name:'CommDesc',
+        params:{
+          cid
+        }
+      })
+    }
   }
 }
 </script>

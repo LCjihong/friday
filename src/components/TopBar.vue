@@ -1,9 +1,9 @@
 <template>
   <el-row id="top-bar">
     <el-row class="search-box" type="flex" justify="space-between">
-      <div class="image-box">
+      <router-link tag="div" to="/" class="image-box" style="cursor:pointer">
         <img src="http://renjihong.zone:2000/home/logo.png" alt="礼拜五">
-      </div>
+      </router-link>
       <div class="search">
         <div class="search-input">
           <div class="input-box">

@@ -161,6 +161,7 @@ export default new Router({
     },
     {
       path: '/commodata',
+      name: 'CommDesc',
       component: () => import('@/components/Home/Nav/commodata')
     },
     {
@@ -204,21 +205,21 @@ export default new Router({
       children: [{
           path: 'login',
           component: () =>
-            import('../components/logo/Longin.vue')
+            import('../components/Logo/Longin.vue')
         },
         {
           path: 'Register',
           component: () =>
-            import('../components/logo/Register.vue')
+            import('../components/Logo/Register.vue')
         }, {
           path: 'Vcaphone',
           component: () =>
-            import('../components/logo/VcaofmPhone.vue')
+            import('../components/Logo/VcaofmPhone.vue')
         },
         {
           path: 'ForgetPwd',
           component: () =>
-            import('../components/logo/ResetPassword.vue')
+            import('../components/Logo/ResetPassword.vue')
         }
       ]
     },

@@ -16,7 +16,7 @@
           </p>
         </div>
       </div>
-       <router-view @tptxe-message = 'tpTex = $event'></router-view>
+      <router-view @tptxe-message = 'tpTex = $event'></router-view>
      </div>
     </div>
   </div>

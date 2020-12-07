@@ -1,6 +1,6 @@
 <template>
   <ul id="Commodity">
-    <li v-for="(item, index) of data" :key="item.cid" :style="{marginLeft:index % 4 == 0 ? '0' : '20px'}">
+    <li v-for="(item, index) of data" :key="item.cid" :style="{marginLeft:index % 4 == 0 ? '0' : '20px'}" @click="handleClick(item.cid)">
       <div class="img-box">
         <img :src="item.cimgurl" />
       </div>
@@ -51,6 +51,14 @@ export default {
           message: 'action: ' + action
         });
       });
+    },
+    handleClick(cid){
+      this.$router.push({
+        name:'CommDesc',
+        params:{
+          cid
+        }
+      })
     }
   }
 }
