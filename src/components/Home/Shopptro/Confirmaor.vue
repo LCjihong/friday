@@ -13,10 +13,10 @@
       <router-view></router-view>
     </div>
     <div class="goodRevInfor">
-      <div class="commodity" v-for="(item, index) of commData" :key="index">
+      <el-row class="commodity" v-for="(item, index) of commData" :key="index">
         <div class="conCenter">
           <div class="conNav">
-            <span class="conNav1"><input type="checkbox" />爱果果水果店</span>
+            <span class="conNav1">{{ item.mname }}</span>
             <span class="conNav2">规格</span>
             <span class="conNav3">单价</span>
             <span class="conNav4">数量</span>
@@ -29,9 +29,6 @@
           v-for="(ite, idx) of item.data"
           :key="idx"
         >
-          <div class="checkBox">
-            <input type="checkbox" />
-          </div>
           <div class="commHead">
             <img :src="ite.cimgurl" alt="" />
           </div>
@@ -42,61 +39,32 @@
             <template>
               <el-input-number
                 v-model="ite.c_mount"
-                @change="handleChange"
+                @change="handleClick($event, ite.c_id, index)"
                 :min="1"
-                :max="10"
-                label="描述文字"
               ></el-input-number>
             </template>
           </div>
-          <div class="money">{{ ite.mount * ite.c_price }}</div>
-          <div class="delet" @click="handleDel">删除</div>
+          <div class="money">{{ ite.c_mount * ite.c_price }}</div>
+          <div class="delet">删除</div>
         </div>
         <div class="amoutgood">
           <div class="amoutcent">
-            运费 <span>￥5.0</span> 商品金额 <span>￥{{ 123 }}</span> 商家合计
-            <span>￥108.0</span>
+            运费 <span>￥{{ parseFloat(item.shipping).toFixed(1) }}</span> 商品金额 <span>￥{{ parseFloat(item.commSum).toFixed(1) }}</span> 商家合计
+            <span>￥{{ parseFloat(item.commSum + item.shipping).toFixed(1) }}</span>
           </div>
         </div>
-        <div class="invoIce">
-          <span class="Incotex"> 开票信息 </span>
-          <div class="invoXuan">
-            <template>
-              <el-checkbox-group v-model="checkList">
-                <el-checkbox label="不需要">不需要</el-checkbox>
-                <el-checkbox label="个人">个人</el-checkbox>
-                <el-checkbox label="单位">单位</el-checkbox>
-              </el-checkbox-group>
-            </template>
-          </div>
-          <div class="invoNum">
-            <span>发票抬头：</span>
-            <div class="invoIn">
-              <input type="text" />
-            </div>
-            <span class="iconfont icon-shanhuxiaerqi invoNumTex"></span>
-            <span>请填写后认真核对发票信息</span>
-          </div>
-        </div>
-        <div class="remark">
-          <span class="remarkTex">添加订单备注</span>
-          <div class="addrema">
-            <input type="text" />
-          </div>
-        </div>
-      </div>
+        
+      </el-row>
     </div>
     <div class="btmBtn">
       <div class="aggregate">
         <div class="aggregate1">
-          <span>实付金额：<span class="aggTex1">￥2977</span></span>
+          <span>实付金额：<span class="aggTex1">￥{{ commData.ssum }}</span></span>
         </div>
         <div class="aggregate1">
-          <span
-            >订单完成后可获得积分：<span class="aggTex2">300积分</span></span
-          >
+          <span>订单完成后可获得积分：<span class="aggTex2">{{parseFloat(commData.ssum / 10)}}积分</span></span>
         </div>
-        <button>提交订单</button>
+        <button @click="handleSubmit">提交订单</button>
       </div>
     </div>
   </div>
@@ -120,21 +88,78 @@ export default {
       commData:[]
     };
   },
-  methods: {
-    handleChange(val) {
-      console.log(val);
+  methods:{
+    handleClick(c_mount, c_id, index){
+      this.$axios.post('/cart/change_mount', this.$qs.stringify({
+        c_mount,
+        c_id
+      })).then(resp => {
+        console.log(resp);
+      })
+      let sum = 0;
+      this.commData[index].data.forEach(element => {
+        sum += element.c_mount * element.c_price;
+      })
+      this.commData[index].commSum = sum;
+      let ssum = 0;
+      this.commData.forEach(element => {
+        ssum += element.commSum + 5;
+      })
+      this.commData.ssum = ssum;
     },
+    handleSubmit(){
+      let arr = [];
+      this.commData.forEach(element => {
+        element.data.map((value)=>'c_id = ' + value.c_id).forEach((value) => {
+          arr.push(value);
+        })
+      });
+      console.log(arr.join(' or '));
+      var uid = sessionStorage.getItem('uid');
+      var oid = new Date().getTime() + uid;
+      this.$axios.post('/address/sel_default', this.$qs.stringify({uid})).then((res) => {
+        this.$axios.post('/myorder/add_order', this.$qs.stringify({
+          ids:arr.join(' or '),
+          aid:res.data[0].aid,
+          oid,
+          uid
+        })).then(resp => {
+          this.$router.push({
+            name:'SuccessSubmiss',
+            params:{
+              aid:res.data[0].aid,
+              oid,
+              cost:this.commData.ssum
+            }
+          });
+        });
+      })
+    }
   },
   beforeMount(){
     this.$axios.get('/myorder?uid=' + sessionStorage.getItem('uid'))
     .then(resp => {
-      console.log(resp);
+      let ssum = 0;
+      resp.data.forEach(element => {
+        let sum = 0;
+        element.shipping = 5;
+        element.data.forEach(elt => {
+          sum += elt.c_mount * elt.c_price;
+        });
+        element.commSum = sum;
+        ssum += element.commSum + 5;
+      });
+      resp.data.ssum = ssum;
+      this.commData = resp.data;
     })
   }
 };
 </script>
 
 <style scoped>
+.Lineitem{
+  margin-bottom: 20px;
+}
 .top-log {
   /* float: left; */
   width: 1280px;
@@ -193,35 +218,27 @@ export default {
 }
 .goodRevInfor {
   width: 1280px;
-  /* height: 1300px; */
   margin: 0 auto;
-  /* background-color: pink; */
 }
 .nav1 {
   width: 1280px;
   margin: 0 auto;
-  /* height: 50px; */
   position: relative;
   margin-top: 30px;
-  /* background-color: #959595; */
 }
 .topTexa {
-  /* float: left; */
   position: absolute;
   left: 50px;
-  /* top: 20px; */
   font-size: 18px;
   line-height: 50px;
 }
 .topnav {
   font-size: 18px;
   line-height: 50px;
-  /* float: left; */
   position: absolute;
   left: 0;
   color: #f08200;
   font-size: 30px;
-  /* margin-left: 0; */
 }
 .topBtn {
   width: 90px;
@@ -234,25 +251,16 @@ export default {
   float: right;
   margin-top: 10px;
 }
-
-/* .commodity{
-  width: 1280px;
-  height: 800px;
-  /background-color: yellow;
-} */
 .comTop {
   width: 1280px;
   height: 60px;
-  /* float: left; */
   line-height: 60px;
   font-size: 18px;
   color: #959595;
 }
 .commodity {
   width: 1280px;
-  height: 844px;
-  margin: 0 auto;
-  /* float: left; */
+  margin: 0 auto 10px;
   border: 1px solid gainsboro;
 }
 .conNav {
@@ -260,11 +268,10 @@ export default {
   height: 47px;
   line-height: 47px;
   font-size: 16px;
+  box-sizing: border-box;
+  padding-left: 10px;
   background-color: #f2f2f2;
 }
-/* .conNav1{
-  margin-left: 58px;
-} */
 .conNav2 {
   margin-left: 320px;
 }
@@ -284,6 +291,7 @@ export default {
   width: 1280px;
   height: 140px;
   float: left;
+  padding-left: 15px;
   border-bottom: 1px solid gainsboro;
 }
 .commHead {
@@ -308,7 +316,6 @@ export default {
   height: 120px;
   line-height: 120px;
   float: left;
-  /* margin-left: 20px; */
 }
 .conmmMone {
   width: 60px;
@@ -326,7 +333,6 @@ export default {
 .money {
   float: left;
   line-height: 120px;
-  /* color: red; */
   font-size: 18px;
   margin-left: 90px;
 }
@@ -369,7 +375,6 @@ export default {
 .btmBtn {
   width: 1280px;
   height: 160px;
-  /* float: left; */
   margin: 0 auto;
   border: 1px solid gainsboro;
 }
@@ -386,7 +391,6 @@ export default {
 }
 .aggregate {
   float: right;
-  /* line-height: 130px; */
 }
 .aggregate button {
   width: 150px;
@@ -422,7 +426,6 @@ export default {
   width: 1280px;
   height: 40px;
   line-height: 40px;
-  /* background-color: red; */
   float: left;
 }
 .invoNum {
@@ -452,13 +455,11 @@ export default {
 }
 .remarkTex {
   width: 100%;
-  /* float: left; */
   margin-top: 20px;
 }
 .addrema {
   width: 630px;
   height: 35px;
-  /* float: left; */
   margin-top: 20px;
   border: 1px solid gray;
 }
@@ -469,7 +470,6 @@ export default {
 .remarkTex1 {
   margin-top: 20px;
   color: green;
-  /* float: left; */
 }
 .modif {
   margin-top: 10px;

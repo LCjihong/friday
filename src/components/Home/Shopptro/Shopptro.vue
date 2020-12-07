@@ -100,7 +100,7 @@ export default {
         ids:arr.join(' or ')
       })
       .then(resp => {
-        console.log(resp);
+        this.$router.push({path:'/confirmaor/addsite'});
       })
     }
   }

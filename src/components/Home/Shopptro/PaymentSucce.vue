@@ -7,9 +7,9 @@
       <p  class="succTex">支付成功</p>
       <div class="succBtn">
         <button class="sbtn1">查看订单</button>
-        <button class="sbtn2">返回首页</button>
+        <router-link to="/" tag="button" class="sbtn2">返回首页</router-link>
       </div>
-      <p class="sucNum">订单编号： 20150901144912ah4941</p>
+      <p class="sucNum">订单编号： {{ oid }}</p>
   </div>
 </template>
 
@@ -19,6 +19,14 @@ export default {
  components:{
     toutop,
   },
+  data(){
+    return {
+      oid:''
+    }
+  },
+  beforeMount(){
+    this.oid = this.$route.params.oid;
+  }
 }
 </script>
 

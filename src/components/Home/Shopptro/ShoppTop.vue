@@ -4,9 +4,9 @@
 
        <div class="TouToptex">
          <el-breadcrumb separator-class="el-icon-arrow-right">
-            <el-breadcrumb-item :to="{ path: '/cart' }">我的购物车</el-breadcrumb-item>
-            <el-breadcrumb-item :to="{ path: '/confirmaor' }">确认订单信息</el-breadcrumb-item>
-            <el-breadcrumb-item :to="{ path: '/paymentsucce' }">订单提交成功</el-breadcrumb-item>
+            <el-breadcrumb-item>我的购物车</el-breadcrumb-item>
+            <el-breadcrumb-item>确认订单信息</el-breadcrumb-item>
+            <el-breadcrumb-item>订单提交成功</el-breadcrumb-item>
           </el-breadcrumb>
        </div>
   </div>
