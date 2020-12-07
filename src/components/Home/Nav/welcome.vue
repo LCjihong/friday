@@ -156,6 +156,10 @@ export default {
     this.$axios.get('http://renjihong.zone:3000/recommend')
     .then(resp => {
       resp.data.forEach((value, index, arr) => {
+        value.forEach((v, i, ar) => {
+          ar[i].cprice = parseInt(v.cprice.split(',')[0]).toFixed(1);
+          ar[i].oprice = parseInt(v.oprice.split(',')[0]).toFixed(1);
+        })
         this.commodGroupData[index].data = value;
       })
     });
