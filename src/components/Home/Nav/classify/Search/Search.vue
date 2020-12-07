@@ -28,6 +28,10 @@ export default {
   beforeMount(){
     this.$axios.get(`/commodity/sel_like?keyword=${this.$route.params.keyword}`)
     .then(resp => {
+      resp.data.forEach(element => {
+        element.cprice = parseFloat(element.cprice.split(',')[0]).toFixed(1);
+        element.oprice = parseFloat(element.oprice.split(',')[0]).toFixed(1);
+      });
       this.commData = resp.data;
     })
   }
