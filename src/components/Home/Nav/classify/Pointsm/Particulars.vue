@@ -157,7 +157,7 @@
 
 <script>
 import topbar from "@/components/TopBar";
-import breadnav from '@/components/breadnav';
+import breadnav from '@/components/Breadnav';
 export default {
   components:{
     topbar,

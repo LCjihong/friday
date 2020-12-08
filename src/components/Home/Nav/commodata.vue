@@ -161,7 +161,7 @@
 
 <script>
 import topbar from "@/components/TopBar";
-import breadnav from "@/components/breadnav";
+import breadnav from "@/components/Breadnav";
 export default {
   components: {
     breadnav,
@@ -298,18 +298,22 @@ export default {
   },
   methods: {
     buyNow(){
-      this.$axios.post('/cart/insert', this.$qs.stringify({
-        cid:this.commData.cid,
-        uid:sessionStorage.getItem('uid'),
-        c_cspecifications:this.commData.cspecifications[this.choice],
-        c_mount:this.num,
-        c_price:this.commData.cprice[this.choice],
-      })).then(resp => {
-        this.$message({
-          message: "添加购物车成功",
-          type: "success",
-        });
-      })
+      if (sessionStorage.getItem('uid')) {
+        this.$axios.post('/cart/insert', this.$qs.stringify({
+          cid:this.commData.cid,
+          uid:sessionStorage.getItem('uid'),
+          c_cspecifications:this.commData.cspecifications[this.choice],
+          c_mount:this.num,
+          c_price:this.commData.cprice[this.choice],
+        })).then(resp => {
+          this.$message({
+            message: "添加购物车成功",
+            type: "success",
+          });
+        })
+      }else{
+        this.$router.push({path:'/lr/login'})
+      }
     }
   },
 };

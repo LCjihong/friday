@@ -1,7 +1,7 @@
 <template>
   <div id="city-box">
     <swiper :config="swiperConfig"></swiper>
-    <el-row id="box">
+    <div id="box">
       <recommend :data="recommendData"></recommend>
       <city-classify></city-classify>
       <el-header height="66px" class="info-header">
@@ -11,48 +11,53 @@
           <span class="ratest">评分最高</span>
         </div>
       </el-header>
-      <city-info :data="infoData"></city-info>
-    </el-row>
-    <el-row id="Pagination">
-      <!-- @size-change="handleSizeChange"
+      <el-main class="info-box">
+        <city-info :data="infoData"></city-info>
+      </el-main>
+    </div>
+    <el-row class="pageControl">
+      <el-row id="Pagination">
+        <!-- @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
       :current-page.sync="currentPage" -->
-      <el-pagination
-      background
-      :page-size="12"
-      layout="prev, pager, next, jumper"
-      :total="1000">
-    </el-pagination>
+        <el-pagination
+          background
+          :page-size="12"
+          layout="prev, pager, next, jumper"
+          :total="infoData.length"
+        >
+        </el-pagination>
+      </el-row>
     </el-row>
   </div>
 </template>
 
 <script>
 import Swiper from "@/components/Swiper";
-import Recommend from '@/components/Recommend';
+import Recommend from "@/components/Recommend";
 import CityInfo from "@/components/Home/Nav/Classify/City/CityInfo";
-import CityClassify from '@/components/Home/Nav/Classify/City/CityClassify'
+import CityClassify from "@/components/Home/Nav/Classify/City/CityClassify";
 export default {
-  name:'city',
-  components:{
+  name: "city",
+  components: {
     Swiper,
     Recommend,
     CityInfo,
-    CityClassify
+    CityClassify,
   },
-  data(){
+  data() {
     return {
-      swiperConfig:{
-        height:'500px',
-        data:[
-          'http://renjihong.zone:2000/home/swiper1.png',
-          'http://renjihong.zone:2000/home/swiper1.png',
-          'http://renjihong.zone:2000/home/swiper1.png',
-          'http://renjihong.zone:2000/home/swiper1.png',
-          'http://renjihong.zone:2000/home/swiper1.png',
-        ]
+      swiperConfig: {
+        height: "500px",
+        data: [
+          "http://renjihong.zone:2000/home/swiper1.png",
+          "http://renjihong.zone:2000/home/swiper1.png",
+          "http://renjihong.zone:2000/home/swiper1.png",
+          "http://renjihong.zone:2000/home/swiper1.png",
+          "http://renjihong.zone:2000/home/swiper1.png",
+        ],
       },
-      recommendData:[
+      recommendData: [
         {
           type: 1,
           title: ["内蒙古草原", "羔羊羊精肉"],
@@ -76,126 +81,49 @@ export default {
           img: "http://renjihong.zone:2000/home/recommend4.png",
         },
       ],
-      infoData:[
-        {
-          title:'阳澄湖大闸蟹',
-          rate:Math.floor(Math.random() * 5 + 1),
-          meanPrice:Math.floor(Math.random() * 100 + 10),
-          addr:'浙江省台州市温岭市人民西路2号',
-          img:'http://renjihong.zone:2000/city/city-info1.png'
-        },
-        {
-          title:'阳澄湖大闸蟹',
-          rate:Math.floor(Math.random() * 5 + 1),
-          meanPrice:Math.floor(Math.random() * 100 + 10),
-          addr:'浙江省台州市温岭市人民西路2号',
-          img:'http://renjihong.zone:2000/city/city-info2.png'
-        },
-        {
-          title:'阳澄湖大闸蟹',
-          rate:Math.floor(Math.random() * 5 + 1),
-          meanPrice:Math.floor(Math.random() * 100 + 10),
-          addr:'浙江省台州市温岭市人民西路2号',
-          img:'http://renjihong.zone:2000/city/city-info3.png'
-        },
-        {
-          title:'阳澄湖大闸蟹',
-          rate:Math.floor(Math.random() * 5 + 1),
-          meanPrice:Math.floor(Math.random() * 100 + 10),
-          addr:'浙江省台州市温岭市人民西路2号',
-          img:'http://renjihong.zone:2000/city/city-info4.png'
-        },
-        {
-          title:'阳澄湖大闸蟹',
-          rate:Math.floor(Math.random() * 5 + 1),
-          meanPrice:Math.floor(Math.random() * 100 + 10),
-          addr:'浙江省台州市温岭市人民西路2号',
-          img:'http://renjihong.zone:2000/city/city-info1.png'
-        },
-        {
-          title:'阳澄湖大闸蟹',
-          rate:Math.floor(Math.random() * 5 + 1),
-          meanPrice:Math.floor(Math.random() * 100 + 10),
-          addr:'浙江省台州市温岭市人民西路2号',
-          img:'http://renjihong.zone:2000/city/city-info2.png'
-        },
-        {
-          title:'阳澄湖大闸蟹',
-          rate:Math.floor(Math.random() * 5 + 1),
-          meanPrice:Math.floor(Math.random() * 100 + 10),
-          addr:'浙江省台州市温岭市人民西路2号',
-          img:'http://renjihong.zone:2000/city/city-info3.png'
-        },
-        {
-          title:'阳澄湖大闸蟹',
-          rate:Math.floor(Math.random() * 5 + 1),
-          meanPrice:Math.floor(Math.random() * 100 + 10),
-          addr:'浙江省台州市温岭市人民西路2号',
-          img:'http://renjihong.zone:2000/city/city-info4.png'
-        },
-        {
-          title:'阳澄湖大闸蟹',
-          rate:Math.floor(Math.random() * 5 + 1),
-          meanPrice:Math.floor(Math.random() * 100 + 10),
-          addr:'浙江省台州市温岭市人民西路2号',
-          img:'http://renjihong.zone:2000/city/city-info1.png'
-        },
-        {
-          title:'阳澄湖大闸蟹',
-          rate:Math.floor(Math.random() * 5 + 1),
-          meanPrice:Math.floor(Math.random() * 100 + 10),
-          addr:'浙江省台州市温岭市人民西路2号',
-          img:'http://renjihong.zone:2000/city/city-info2.png'
-        },
-        {
-          title:'阳澄湖大闸蟹',
-          rate:Math.floor(Math.random() * 5 + 1),
-          meanPrice:Math.floor(Math.random() * 100 + 10),
-          addr:'浙江省台州市温岭市人民西路2号',
-          img:'http://renjihong.zone:2000/city/city-info3.png'
-        },
-        {
-          title:'阳澄湖大闸蟹',
-          rate:Math.floor(Math.random() * 5 + 1),
-          meanPrice:Math.floor(Math.random() * 100 + 10),
-          addr:'浙江省台州市温岭市人民西路2号',
-          img:'http://renjihong.zone:2000/city/city-info4.png'
-        }
-      ]
+      infoData: [],
     };
   },
-  beforeMount(){
-  //   this.$axios.post('http://renjihong.zone:3000/merchant/mercha',this.$qs.stringify({
-
-  //   })).then(function(res){
-  //     console.log(res)
-  //   }).catch(function(error){
-  //     console.log(error)
-  //   })
-  }
-}
+  beforeCreate() {
+    this.$axios.post('http://renjihong.zone:3000/merchant/mercha',this.$qs.stringify({
+    })).then((res) => {
+      res.data.forEach(element => {
+        element.rate = Math.floor(Math.random() * 5 + 1);
+      });
+      this.infoData = res.data;
+    })
+  },
+};
 </script>
 
 <style scoped>
-  #box{
-    width: 1280px;
-    margin: 0 auto;
-  }
-  .info-header{
-    display: flex;
-    justify-content: flex-end;
-    line-height: 66px;
-  }
-  .info-header span{
-    border: 1px solid #e7e7e7;
-    padding: 2px 15px;
-  }
-  #Pagination{
-    text-align: center;
-  }
-  #Pagination .btn-next, #Pagination .btn-prev{
-    background: unset !important;
-    background-color: #666 !important;
-    color: pink;
-  }
+#box {
+  width: 1280px;
+  margin: 0 auto;
+}
+.info-header {
+  display: flex;
+  justify-content: flex-end;
+  line-height: 66px;
+}
+.info-header span {
+  border: 1px solid #e7e7e7;
+  padding: 2px 15px;
+}
+#Pagination {
+  text-align: center;
+}
+#Pagination .btn-next,
+#Pagination .btn-prev {
+  background: unset !important;
+  background-color: #666 !important;
+  color: pink;
+}
+.pageControl{
+  text-align: center;
+}
+.info-box{
+  width: 1280px;
+  padding: 0;
+}
 </style>

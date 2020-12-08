@@ -255,18 +255,22 @@ export default {
       });
     },
     showBox(arg){
-      let cid = arg[1];
-      this.$axios.get(`/commodity/sel_id?cid=${cid}`)
-      .then(resp => {
-        resp.data[0].cprice = resp.data[0].cprice.split(',');
-        resp.data[0].oprice = resp.data[0].oprice.split(',');
-        resp.data[0].cspecifications = resp.data[0].cspecifications.split(',');
-        this.boxData = resp.data[0];
-        this.box_cprice = resp.data[0].cprice;
-        this.box_oprice = resp.data[0].oprice;
-        this.dialogVisible = arg[0];
-        console.log(resp.data[0]);
-      })
+      if (sessionStorage.getItem('uid')) {
+        let cid = arg[1];
+        this.$axios.get(`/commodity/sel_id?cid=${cid}`)
+        .then(resp => {
+          resp.data[0].cprice = resp.data[0].cprice.split(',');
+          resp.data[0].oprice = resp.data[0].oprice.split(',');
+          resp.data[0].cspecifications = resp.data[0].cspecifications.split(',');
+          this.boxData = resp.data[0];
+          this.box_cprice = resp.data[0].cprice;
+          this.box_oprice = resp.data[0].oprice;
+          this.dialogVisible = arg[0];
+          console.log(resp.data[0]);
+        })
+      }else{
+        this.$router.push({path:'/lr/login'})
+      }
     },
     ashandel1() {
       //  点击添加到购物车

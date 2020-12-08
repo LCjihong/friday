@@ -64,16 +64,19 @@
         <div class="ziyingshangjia"></div>
       </div>
     </el-row>
-    <city-classify></city-classify>
-    <el-row class="merchant-info">
-      <commodity :data="infoData"></commodity>
-    </el-row>
-    <el-row class="changePage">
-      <el-pagination
-        background
-        layout="prev, pager, next"
-        :total="1000">
-      </el-pagination>
+    <el-row v-if="infoData.length">
+      <city-classify></city-classify>
+      <el-row class="merchant-info">
+        <commodity :data="infoData"></commodity>
+      </el-row>
+      <el-row class="changePage">
+        <el-pagination
+          background
+          :page-size="12"
+          layout="prev, pager, next"
+          :total="infoData.length">
+        </el-pagination>
+      </el-row>
     </el-row>
   </el-row>
 </template>
@@ -155,12 +158,17 @@ export default {
     }
   },
   beforeMount(){
-    console.log(1);
-    this.$axios.get('/merchant?mid=10000')
+    this.$axios.get(`/merchant?mid=${this.$route.query.mid}`)
     .then(resp => {
-      console.log(resp);
-    }).catch(err => {
-      console.log(err);
+      this.merchantData = resp.data[0]
+    })
+    this.$axios.get(`/commodity/sel_mer?mid=${this.$route.query.mid}`)
+    .then(resp => {
+      resp.data.forEach(element => {
+        element.cprice = parseFloat(element.cprice.split(',')[0]).toFixed(1);
+        element.oprice = parseFloat(element.oprice.split(',')[0]).toFixed(1);
+      })
+      this.infoData = resp.data;
     })
   },
   components:{
@@ -243,7 +251,7 @@ export default {
   box-sizing: border-box;
   border-top: 1px solid #e3e3e3;
   border-bottom: 1px solid #e3e3e3;
-  font: 18px/40px '';
+  font: 18px/40px 'microsoft yahei';
   padding: 17px 0;
 }
 .icon::before{
@@ -258,11 +266,11 @@ export default {
   padding-top: 20px;
 }
 .announcement h3{
-  font: 24px/40px '';
+  font: 24px/40px 'microsoft yahei';
 }
 .announcement p{
   color: #666666;
-  font: 14px/30px '';
+  font: 14px/30px 'microsoft yahei';
 }
 .rate{
   background-color: #f4fff2;

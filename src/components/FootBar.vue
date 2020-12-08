@@ -174,7 +174,7 @@ hr{
   padding-right: 5px;
 }
 .options-box li span{
-  font: 200 24px/45px '';
+  font: 200 24px/45px 'microsoft yahei';
 }
 .footer{
   width: 1280px;

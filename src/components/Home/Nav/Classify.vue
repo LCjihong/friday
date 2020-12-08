@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import breadnav from '@/components/breadnav'
+import breadnav from '@/components/Breadnav'
 export default {
   components:{
     breadnav

@@ -63,6 +63,13 @@ export default new Router({
           path: 'personal',
           component: () => import('@/components/Home/Personal/Personal'),
           redirect: '/personal/maccount',
+          beforeEnter: (to, from, next) => {
+            if (sessionStorage.getItem('uid')) {
+              next();
+            } else {
+              next('/lr/login');
+            }
+          },
           children: [{
               path: 'maccount',
               component: () => import('@/components/Home/Personal/MyAccount/MyAccount')
@@ -196,15 +203,22 @@ export default new Router({
     },
     {
       path: '/commodata',
-      component: () => import('@/components/Home/Nav/commodata')
+      component: () => import('@/components/Home/Nav/Commodata')
     },
     {
       path: '/cart',
-      component: () => import('@/components/Home/Shopptro/Shopptro')
+      component: () => import('@/components/Home/Shopptro/Shopptro'),
+      beforeEnter: (to, from, next) => {
+        if (sessionStorage.getItem('uid')) {
+          next();
+        }else{
+          next('/lr/login');
+        }
+      }
     },
     {
       path: '/confirmaor',
-      component: () => import('@/components/Home/Shopptro/confirmaor'),
+      component: () => import('@/components/Home/Shopptro/Confirmaor'),
       redirect: '/confirmaor/addsite',
       children: [{
           path: 'addsite',

@@ -650,7 +650,7 @@ export default {
   color: #ffffff;
 }
 .nav-box span, .nav-box em{
-  font: 16px/50px '';
+  font: 16px/50px 'microsoft yahei';
 }
 .nav-box span{
   padding: 0 60px;

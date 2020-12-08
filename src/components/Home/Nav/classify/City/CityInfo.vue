@@ -1,11 +1,15 @@
 <template>
   <ul class="city-info">
-    <li v-for="(item, index) of data" :key="index" :style="{marginLeft:index % 4 == 0 ? '0px' : '20px'}">
+    <li 
+    v-for="(item, index) of data" 
+    :key="item.mid" 
+    :style="{marginLeft:index % 4 == 0 ? '0px' : '20px'}"
+    @click="handleClick(item.mid)">
       <div class="img-box">
-        <img :src="item.img" alt="">
+        <img :src="item.mimgurl" alt="">
       </div>
       <div class="info">
-        <div class="title">{{ item.title }}</div>
+        <div class="title">{{ item.mname }}</div>
         <p class="orange">
           <el-rate 
           :value="item.rate" 
@@ -13,9 +17,9 @@
           disabled-void-color="#d0d0d0" 
           :colors="['#ec6a17','#ec6a17','#ec6a17']" 
           ></el-rate>
-          <span class="iconfont icon-fl-renminbi">{{ item.meanPrice }}/人</span>
+          <span class="iconfont icon-fl-renminbi">{{ item.mprice }}/人</span>
         </p>
-        <p class="addr">{{ item.addr }}</p>
+        <p class="addr">{{ item.maddr }}</p>
       </div>
     </li>
   </ul>
@@ -24,7 +28,17 @@
 <script>
 export default {
   name:'CityInfo',
-  props:['data']
+  props:['data'],
+  methods:{
+    handleClick(mid){
+      this.$router.push({
+        path:'/classify/merchant',
+        query:{
+          mid
+        }
+      })
+    }
+  }
 }
 </script>
 

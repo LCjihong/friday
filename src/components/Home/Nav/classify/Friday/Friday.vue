@@ -23,7 +23,7 @@
 
 <script>
 import AboutPath from '../AboutPath';
-import breadnav from '@/components/breadnav';
+import breadnav from '@/components/Breadnav';
 
 export default {
    name:'AboutPriority',

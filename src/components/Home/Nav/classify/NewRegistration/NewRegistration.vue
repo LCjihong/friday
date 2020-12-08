@@ -31,7 +31,7 @@
 <script>
 import AboutPath from '../AboutPath';
 import AboutFriday from '../AboutFriday';
-import breadnav from '@/components/breadnav'
+import breadnav from '@/components/Breadnav'
 export default {
     name:"NewRegistration",
     components:{

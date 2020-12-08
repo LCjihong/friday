@@ -93,7 +93,7 @@ export default {
 #top-bar {
   height: 36px;
   background-color: #eeeeee;
-  font: 14px/36px "";
+  font: 14px/36px "microsoft yahei";
   line-height: 36px;
   color: #666666;
 }
